@@ -1,14 +1,14 @@
 <template>
-  <HelloWorld/>
+  <Chart/>
 </template>
 
 <script>
-    import HelloWorld from "@/components/HelloWorld.vue";
+    import Chart from "@/components/Chart.vue";
 
     export default {
-        name: 'HelloWorld',
+        name: 'HealthStatus',
         components: {
-            HelloWorld
+            Chart
         }
     }
 </script>
@@ -21,4 +21,3 @@
   color: #2c3e50;
   margin-top: 60px;
 </style>
-

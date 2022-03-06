@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import About from '@/views/About.vue'
 import HelloWorld from '@/views/HelloWorld.vue'
+import HealthStatus from '@/views/HealthStatus.vue'
 
 const routes = [
     {
@@ -12,6 +13,11 @@ const routes = [
         path: '/about',
         name: 'About',
         component: About
+    },
+    {
+        path: '/graph',
+        name: 'Health Status Checker Graph',
+        component: HealthStatus
     }
 ]
 const router = createRouter({
