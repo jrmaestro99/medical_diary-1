@@ -6,14 +6,13 @@
     <select v-model="selected">
     <option value="">Please select one</option>
     <option>BloodPressure</option>
-    <option></option>
     </select>,<br><br>
 
     <span>Selected: {{ selected }}</span>
 
     <div v-if="selected=='BloodPressure'">
     <h1>Line Chart</h1>
-    <button @click="updateMe()">Click to update the Line chart</button>
+    <button @click="updateMe()">Click to update the Line chart</button><br><br>
     <line-chart class = 'user' width =500px :data = "bp"> </line-chart>
     </div>
 
