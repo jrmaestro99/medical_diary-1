@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import About from '@/views/About.vue'
 import HelloWorld from '@/views/HelloWorld.vue'
 import HealthStatus from '@/views/HealthStatus.vue'
+import Reminders from '@/views/Reminders.vue'
+
 
 const routes = [
     {
@@ -18,6 +20,11 @@ const routes = [
         path: '/graph',
         name: 'Health Status Checker Graph',
         component: HealthStatus
+    },
+    {
+        path: '/reminders',
+        name: 'Reminders',
+        component: Reminders
     }
 ]
 const router = createRouter({
