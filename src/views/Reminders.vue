@@ -1,15 +1,14 @@
 <template>
-hihi
-  <Reminders/>
+  <Table/>
 </template>
 
 <script>
-    import Reminders from "@/components/Reminders.vue";
+    import Table from "@/components/Table.vue";
 
     export default {
         name: 'Reminders',
         components: {
-            Reminders
+            Table
         }
     }
 </script>

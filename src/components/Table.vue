@@ -1,5 +1,4 @@
 <template>
-
     <h2 id="header">My Reminders</h2>
     <table id="table">
     <tr>
@@ -20,7 +19,7 @@
 
 // const db = getFirestore(firebaseApp)
 export default {
-  name: "Reminders",
+  name: "Table",
   methods: {
     showReminder() {
       alert("Have you taken your medicine?")

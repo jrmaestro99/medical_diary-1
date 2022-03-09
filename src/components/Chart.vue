@@ -6,7 +6,7 @@
     <select v-model="selected">
     <option value="">Please select one</option>
     <option>BloodPressure</option>
-    </select>,<br><br>
+    </select><br><br>
 
     <span>Selected: {{ selected }}</span>
 
