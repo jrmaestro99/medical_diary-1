@@ -1,8 +1,10 @@
 <template>
   <div id="nav">
     <router-link to="/">Hello World</router-link> |
-    <router-link to="/about">About</router-link> | 
-    <router-link to="/graph">Health Status Graph</router-link>
+    <router-link to="/about">About</router-link> |
+    <router-link to="/reminders">My Reminders</router-link> |
+    <router-link to="/graph">Health Status Graph</router-link> 
+    
   </div>
   <router-view/>
 </template>

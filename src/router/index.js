@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import About from '@/views/About.vue'
 import HelloWorld from '@/views/HelloWorld.vue'
+import Reminders from '@/views/Reminders.vue'
 import HealthStatus from '@/views/HealthStatus.vue'
 
 const routes = [
@@ -15,10 +16,16 @@ const routes = [
         component: About
     },
     {
+        path: '/reminders',
+        name: 'Reminders',
+        component: Reminders
+    },
+    {
         path: '/graph',
         name: 'Health Status Checker Graph',
         component: HealthStatus
     }
+
 ]
 const router = createRouter({
     history: createWebHistory(),
