@@ -44,7 +44,7 @@ body{
   color: #2c3e50;
   margin: auto;
   width: 60%;
-  margin-top: 5rem;
+  margin-top: 10rem;
 }
 #nav {
   display: flex;
