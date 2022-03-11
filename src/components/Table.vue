@@ -1,5 +1,5 @@
 <template>
-    <h2 id="header">My Reminders</h2>
+    <div id="header">My Reminders</div>
     <table id="table">
     <tr>
     <th>Medication</th>
@@ -27,7 +27,7 @@ export default {
   mounted() {
     async function display() {
         let z = await getDocs(collection(db, "Reminders"));
-        print(z)
+        //print(z)
         let index = 1;
         z.forEach((docs) => {
           let yy = docs.data();
@@ -106,7 +106,7 @@ export default {
         Function:medFunction, Dosage: medDosage, "MedicineName": medName,
       })
       console.log(docRef)
-      this.$emit("added")
+        this.$emit("added")
       }
       catch(error) {
         console.error("Error adding document: ", error);
