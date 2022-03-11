@@ -47,7 +47,6 @@ body{
   margin-top: 5rem;
 }
 #nav {
-  padding-top: 30px 0 0px 0px;
   display: flex;
   align-content: center;
 }
@@ -89,6 +88,7 @@ body{
 
 #routerview {
   padding: 3rem 0;
+  margin-top: -5px;
   background-color: #fff;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
