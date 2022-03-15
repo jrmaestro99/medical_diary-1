@@ -12,25 +12,26 @@
     </select><br><br>
 
     <div class="input" v-if="health=='Blood Pressure'">
-        <label for="bpinput">Enter Your Blood Pressure Today </label>
+        <label for="bpinput">Blood Pressure Today </label>
         <input type="number" id="bpinput" v-model.lazy="savedbp" required><br><br>
         <button id = "bpsave" type = "button" @click = "savetofb($event, this.bpdoc, this.savedbp, 'Blood Pressure')"><b>Save</b></button><br><br>
     </div>
 
     <div class="input" v-if="health=='Weight'">
-        <label for="wginput">Enter Your Weight Today </label>
+        <label for="wginput">Weight Today </label>
         <input type="number" id="wginput" v-model.lazy="savedwg" required><br><br>
         <button id = "wgsave" type = "button" @click = "savetofb($event, this.wgdoc, this.savedwg, 'Weight')"><b>Save</b></button><br><br>
     </div>
 
     <div class="input" v-if="health=='Both'">
-        <label for="bpinput">Enter Your Blood Pressure Today </label>
-        <input type="number" id="bpinput" v-model.lazy="savedbp" required><br><br>
-        <label for="wginput">Enter Your Weight Today </label>
+        <label for="bpinput">Blood Pressure Today </label>
+        <input type="number" id="bpinput" v-model.lazy="savedbp" required><br>
+        <label for="wginput">Weight Today </label>
         <input type="number" id="wginput" v-model.lazy="savedwg" required><br><br>
         <button id = "bsave" type = "button" @click = "save($event, this.bpdoc, this.wgdoc, this.savedbp, this.savedwg);"><b>Save</b></button><br><br>
     </div>
 
+    <br>
     <label for="graphinput">Choose graph: </label>
     <select id="graphinput" v-model="selected">
     <option value=""></option>
@@ -178,18 +179,23 @@ export default {
     border: 3px solid grey;
 }
 
+.input {
+    margin: auto;
+    width: 60%;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px 1.5px;
+}
+
 .input label {
     display: inline-block;
     text-align: right;
-    width: 40%;
+    width: 30%;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .input input {
     display: inline-block;
     text-align: left;
-    width: 40%;
     margin: 10px;
 }
 
