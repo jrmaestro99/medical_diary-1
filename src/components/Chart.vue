@@ -42,19 +42,25 @@
 
     <div v-if="selected=='Blood Pressure'">
         <h1>{{selected}} Line Chart</h1>
-        <line-chart class = 'user' width =500px :data = "bp"> </line-chart>
+        <line-chart id="bpchart" class='user' width=500px :data="bpfilter"> </line-chart><br>
+        <input type="checkbox" id="bpcheckbox" value="true" v-model="filter" @change="filterby">
+        <label for="bpcheckbox">show only the past 7 days</label>
     </div>
 
     <div v-if="selected=='Weight'">
         <h1>{{selected}} Line Chart</h1>
-        <line-chart class = 'user' width =500px :data = "bp"> </line-chart>
+        <line-chart id="wgchart" class='user' width=500px :data="wgfilter"> </line-chart>
+        <input type="checkbox" id="bpcheckbox" value="true" v-model="filter" @change="filterby">
+        <label for="bpcheckbox">show only the past 7 days</label>
     </div>
 
     <div v-if="selected=='Both'">
         <h1>Blood Pressure Line Chart</h1>
-        <line-chart class = 'user' width =500px :data = "bp"> </line-chart>
+        <line-chart id="bpchart" class='user' width=500px :data="bpfilter"> </line-chart><br>
         <h1>Weight Line Chart</h1>
-        <line-chart class = 'user' width =500px :data = "wg"> </line-chart>
+        <line-chart id="wgchart" class='user' width=500px :data="wgfilter"> </line-chart>
+        <input type="checkbox" id="bpcheckbox" value="true" v-model="filter" @change="filterby">
+        <label for="bpcheckbox">show only the past 7 days</label>
     </div>
 
 </template>
@@ -73,6 +79,9 @@ export default {
             // {'Monday': 2, 'Tuesday': 5, 'Wednesday': 2, 'Thursday': 5, 'Friday':6},artdata: 
             bp: {},
             wg: {},
+            bpfilter: {},
+            wgfilter: {},
+            filter: false,
             bpdoc: doc(db, "HealthStatus", "BloodPressure"),
             wgdoc: doc(db, "HealthStatus", "Weight"),
             savedbp:"",
@@ -84,13 +93,13 @@ export default {
         }
     },
     methods:{
-        async updateMe() {
-            let z = await getDoc(this.bpdoc);
-            console.log(z.data());
+        // async updateMe() {
+        //     let z = await getDoc(this.bpdoc);
+        //     console.log(z.data());
 
-            //this.bp = {'Monday': Math.random()*5, 'Tuesday': 5, 'Wednesday': Math.random()* 5, 'Thursday': 5, 'Friday':6};                            
-            this.bp = z.data();
-        },
+        //     //this.bp = {'Monday': Math.random()*5, 'Tuesday': 5, 'Wednesday': Math.random()* 5, 'Thursday': 5, 'Friday':6};                            
+        //     this.bp = z.data();
+        // },
         async savetofb(event, doc, value, message) {
 
             let isExecuted = confirm("Do You Want To Save Today's " + message + " To Firebase?");
@@ -142,9 +151,11 @@ export default {
             let z = await getDoc(this.bpdoc);
             let y = await getDoc(this.wgdoc);
             this.bp = z.data();
+            this.bpfilter = this.bp;
             if (z.data() === undefined) {
                 alert("You have no past data of blood pressure");
                 this.bp = {};
+                this.bpfilter = {};
                 this.bpdisplay = "-";
             } else {
                 if (z.data()[date] === undefined) {
@@ -153,17 +164,44 @@ export default {
                 this.bpdisplay = z.data()[date];
             }
             
-
+            
             this.wg = y.data();
+            this.wgfilter = this.wg;
             if (y.data() === undefined) {
                 alert("You have no past data of weight");
                 this.wg = {};
+                this.wgfilter = {}
                 this.wgdisplay = "-";
             } else {
                 if (y.data()[date] === undefined) {
                     this.wgdisplay = "-";
                 }
                 this.wgdisplay = y.data()[date];
+            }
+        },
+        filterby() {
+            if (this.filter) {
+                let today = new Date();
+                let ago = new Date(today.getTime() - (3 * 24 * 60 * 60 * 1000));
+
+                var tempbp = Object.assign({}, this.bp);
+                var tempwg = Object.assign({}, this.wg);
+                for (const property in tempbp) {
+                    if (new Date(property) < ago) {
+                        delete tempbp[property];
+                    }
+                }
+                for (const property in tempwg) {
+                    if (new Date(property) < ago) {
+                        delete tempwg[property];
+                    }
+                }
+
+                this.bpfilter = tempbp;
+                this.wgfilter = tempwg;
+            } else {
+                this.bpfilter = this.bp;
+                this.wgfilter = this.wg;
             }
         }
     },
