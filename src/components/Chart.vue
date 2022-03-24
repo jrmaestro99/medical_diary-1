@@ -69,6 +69,7 @@
 import firebaseApp from "../firebase.js";
 import { getFirestore } from '@firebase/firestore';
 import { doc, setDoc, getDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const db = getFirestore(firebaseApp);
 
@@ -82,8 +83,10 @@ export default {
             bpfilter: {},
             wgfilter: {},
             filter: false,
-            bpdoc: doc(db, "HealthStatus", "BloodPressure"),
-            wgdoc: doc(db, "HealthStatus", "Weight"),
+            // bpdoc: doc(db, "HealthStatus", "BloodPressure"),
+            // wgdoc: doc(db, "HealthStatus", "Weight"),
+            bpdoc: null,
+            wgdoc: null,
             savedbp:"",
             savedwg:"",
             selected:"",
@@ -92,14 +95,20 @@ export default {
             health:""
         }
     },
+    beforeMount() {
+        const auth = getAuth();
+        this.bpdoc = doc(db, auth.currentUser.email, "BloodPressure");
+        this.wgdoc = doc(db, auth.currentUser.email, "Weight"); 
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.user = user;
+                this.bpdoc = doc(db, auth.currentUser.email, "BloodPressure");
+                this.wgdoc = doc(db, auth.currentUser.email, "Weight"); 
+            }
+        });
+        this.display();
+    },
     methods:{
-        // async updateMe() {
-        //     let z = await getDoc(this.bpdoc);
-        //     console.log(z.data());
-
-        //     //this.bp = {'Monday': Math.random()*5, 'Tuesday': 5, 'Wednesday': Math.random()* 5, 'Thursday': 5, 'Friday':6};                            
-        //     this.bp = z.data();
-        // },
         async savetofb(event, doc, value, message) {
 
             let isExecuted = confirm("Do You Want To Save Today's " + message + " To Firebase?");
@@ -110,8 +119,6 @@ export default {
                     let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
                     const docRef = await setDoc(doc, {[date]: value}, {merge: true});
                     console.log(docRef);
-                    //this.bpdisplay = null;
-                    //this.$emit("added");
                 }
                 catch(error) {
                     console.error("Error adding document: ", error);
@@ -133,8 +140,6 @@ export default {
                     const docRef1 = await setDoc(bpdoc, {[date]: bpvalue}, {merge: true});
                     const docRef2 = await setDoc(wgdoc, {[date]: wgvalue}, {merge: true});
                     console.log(docRef1, docRef2);
-                    //this.bpdisplay = null;
-                    //this.$emit("added");
                 }
                 catch(error) {
                     console.error("Error adding document: ", error);
@@ -204,14 +209,15 @@ export default {
                 this.wgfilter = this.wg;
             }
         }
-    },
-    beforeMount() {
-        this.display();
     }
 }
 </script>
 
 <style scoped>
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
+* {
+    font-family: 'Noto Sans';
+}
 .user {
     margin: auto;
     border: 3px solid grey;
