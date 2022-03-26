@@ -17,6 +17,7 @@
 import firebaseApp from "../firebase.js";
 import { getDocs, getFirestore, deleteDoc } from '@firebase/firestore';
 import { doc, setDoc, collection } from "firebase/firestore"; //collection, getDoc
+import { getAuth } from "firebase/auth";
 //import func from 'vue-editor-bridge';
 const db = getFirestore(firebaseApp)
 
@@ -24,9 +25,10 @@ export default {
   name: "Table",
 
   mounted() {
-    async function display() {
-        let z = await getDocs(collection(db, "Reminders"));
-        //print(z)
+    const auth = getAuth();
+    this.user = auth.currentUser.email;
+    async function display(user) {
+        let z = await getDocs(collection(db, user));
         let index = 1;
         z.forEach((docs) => {
           let yy = docs.data();
@@ -54,7 +56,7 @@ export default {
           deleteButton.id = "deleteButton";
           deleteButton.innerHTML = "Delete";
           deleteButton.onclick = function(){
-                confirmDelete(String(medName))
+                confirmDelete(String(medName), user)
             }
           cell5.appendChild(deleteButton);
 
@@ -70,36 +72,38 @@ export default {
           index += 1;
         })
     }
-    display()
+    display(String(this.user))
     this.showReminder()
 
-    async function delReminder(reminder) {
-      await deleteDoc(doc(db, "Reminders", reminder))
+    async function delReminder(reminder, user) {
+      await deleteDoc(doc(db, user, reminder))
       console.log("deleted ", reminder);
       let table = document.getElementById("table");
       while (table.rows.length > 1){
         table.deleteRow(1)
       }
-      display()
+      display(String(this.user))
     }
 
-    async function confirmDelete(reminder) {
+    async function confirmDelete(reminder, user) {
       let isConfirmed = confirm("Delete this reminder?")
       if (isConfirmed) {
-        delReminder(reminder)
+        delReminder(reminder, user)
       }
     }
 
   //edit entry should get the doc data from the fs based on medname which is the key
 
     async function editReminder(medName, medFunction, medDosage, cell1, cell2, cell3) {
+      const auth = getAuth();
+      const user = auth.currentUser.email;      
       //getting all the previous data in the fields
       var medNameData = medName;
       //medNameData.id = "mednametodelete"
       var medFunctionData = medFunction;
       var medDosageData = medDosage;
       //deleting original entry in preparation of creating new one
-      deleteDoc(doc(db, "Reminders", medNameData));
+      deleteDoc(doc(db, user, medNameData));
       //creating new fields
       var newMedName = document.createElement("input");
       newMedName.value = medNameData;
@@ -155,18 +159,14 @@ export default {
       cell1.appendChild(medName);
       cell2.appendChild(medFunction);
       cell3.appendChild(medDosage);
-      
-      // var saveButton = document.createElement("button");
-      // saveButton.id = "savebutton";
-      // saveButton.innerHTML = "Save";
-      // cell5.appendChild(saveButton);
-      // saveButton.onclick = function(){
-      //   this.savetofs()
-      // }
 
     },
 
     async savetofs() {
+
+      const auth = getAuth();
+      this.user = auth.currentUser.email;
+
       if (document.getElementById("medname") != null) { //if table cell is not null
         var medName=document.getElementById("medname").value;
         var medDosage=document.getElementById("meddosage").value;  
@@ -174,7 +174,7 @@ export default {
         alert("Saving your reminder");
 
         try{
-          const docRef = await setDoc(doc(db, "Reminders", medName),{
+          const docRef = await setDoc(doc(db, String(this.user), medName),{
           Function:medFunction, Dosage: medDosage, "MedicineName": medName,
           })
           console.log(docRef)
@@ -182,15 +182,15 @@ export default {
           catch(error) {
             console.error("Error adding document: ", error);
           }
-          location.reload();
-        } else { //if the original table cell;s entry has been deleted and is now null     
+        location.reload();
+      } else { //if the original table cell;s entry has been deleted and is now null     
         var newMedDosage=document.getElementById("newmeddosage").value;
         var newMedFunction=document.getElementById("newmedfunction").value;
         var newMedName=document.getElementById("newmedname").value;
         alert("Saving your reminder");
 
         try{
-          const docRef = await setDoc(doc(db, "Reminders", newMedName),{
+          const docRef = await setDoc(doc(db, String(this.user), newMedName),{
           Function:newMedFunction, Dosage: newMedDosage, "MedicineName": newMedName,
           })
           console.log(docRef)
@@ -199,11 +199,11 @@ export default {
           catch(error) {
             console.error("Error adding document: ", error);
           }
-          location.reload();
-        }
-      },
-    } 
-  }
+        location.reload();
+      }
+    },
+  } 
+}
 </script>
 
 <style scoped>
