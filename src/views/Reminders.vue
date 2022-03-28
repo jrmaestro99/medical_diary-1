@@ -9,8 +9,9 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Table from "@/components/Table.vue";
+import router from '@/router/index.js';
 
 
 export default {
@@ -25,9 +26,16 @@ export default {
         NavBar
     },
     beforeMount() {
-        const auth = getAuth();      
-        this.user = auth.currentUser
-    },
+      const auth = getAuth();      
+      this.user = auth.currentUser;
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          this.user = user;      
+        } else {
+          router.push('/login');
+        }
+      })
+    }
 }
 </script>
 

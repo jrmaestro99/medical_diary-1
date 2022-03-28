@@ -1,13 +1,12 @@
 <template>
     <div id='container'>
         <div id='firstchild'>
-            <!-- <div @click="$emit('wantlogin')"> -->
             <div @click='login'>
                 <img src="@/assets/patient.png" alt="medical record">
             </div>
         </div>
         <div id='secondchild'>
-            <h1>The medical diary <br/> you ever <br/> dreamed of.</h1>
+            <h1>The medical diary you ever dreamed of.</h1>
             <h3>We made a tool so you can <br>easily keep track of<br>
             your medicine subscription and appointments.<br>But there is a lot more.</h3>
         </div>

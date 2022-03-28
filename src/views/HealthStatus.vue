@@ -5,14 +5,13 @@
             <Chart/>
         </div>
     </div>
-  
-  
 </template>
 
 <script>
 import Chart from "@/components/Chart.vue";
 import NavBar from "@/components/NavBar.vue";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import router from '@/router/index.js';
 
 export default {
   name: 'HealthStatus',
@@ -26,9 +25,16 @@ export default {
     }
   },
   beforeMount() {
-    const auth = getAuth();
+    const auth = getAuth();      
     this.user = auth.currentUser;
-  },
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user;      
+      }  else {
+        router.push('/login');
+      }
+    })
+  }
 }
 </script>
 

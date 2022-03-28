@@ -10,6 +10,7 @@
 <script>
 import Logout from '@/components/Logout.vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import router from '@/router/index.js';
 
 
 export default {
@@ -24,14 +25,16 @@ export default {
             user:false,        
         }
     },
-
-    mounted() {
-        const auth = getAuth();
+    beforeMount() {
+        const auth = getAuth();      
+        this.user = auth.currentUser;
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 this.user = user;      
+            } else {
+                router.push('/login');
             }
         })
-    },
+    }
 }   
 </script>
