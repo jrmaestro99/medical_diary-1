@@ -1,6 +1,8 @@
 <template>
-    <div style="text-align:center;">    
-        <h1  id="mainHead">Medical Diary</h1>
+    <div id='login' style="text-align:center;">
+        <a href="" id="mainHeadLink" @click="main">
+            <h1  id="mainHead">Medical Diary</h1>
+        </a>
         <div id="firebaseui-auth-container"></div>
         <div id="pagecontent">
             Medical Diary is an app to keep track of your medical subscriptions and appointments. <br>
@@ -15,12 +17,17 @@ import firebase from '@/uifire.js'
 import 'firebase/compat/auth';
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
+import router from '@/router/index.js';
 
 export default {
     name:"Login",
-
-  mounted() {
-      
+    methods: {
+        main() {
+            router.push('/');
+        }
+    },
+    mounted() {
+        
         var ui = firebaseui.auth.AuthUI.getInstance();
         console.log("first ui is",ui)
         if (!ui){
@@ -55,6 +62,10 @@ export default {
   margin-bottom: 50px;;
 }
 
+#login {
+    margin-top: 8rem;
+}
+
 #pagecontent{
     height: 100px;
     font-size: larger;
@@ -71,6 +82,11 @@ export default {
     text-align: center;
     font-family: 'Noto Sans';
     color:#E5C6B3
+}
+
+#mainHeadLink{
+    color:#E5C6B3;
+    text-decoration: none;
 }
 
 #bg{

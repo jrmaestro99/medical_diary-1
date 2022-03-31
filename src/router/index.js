@@ -11,12 +11,13 @@ function isAuthenticated() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if (!user) {
-            alert("You have not logged into you account!");
-            return {
-                path: "/login",
-                name: "Login",
-                component: Login
-            }
+            alert("You have not logged into you account!").then(() => {
+                return {
+                    path: "/login",
+                    name: "Login",
+                    component: Login
+                }
+            });
         }
     });
 }

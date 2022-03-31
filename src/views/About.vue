@@ -1,13 +1,12 @@
 <template>
+  <FuncBar/>
   <div id="maincontainer">
     <NavBar/>
     <div v-if='user'>
         <div id='content'>
-            <!-- <h3>This is an About Page</h3> -->
             <p class='heading'>Welcome to Medical Diary</p>
             <p class='content'>Access to self care, health status, therapy and habit formation all in one app<br>
-            We aim to help you develop a better self</p> 
-            <font-awesome-icon id='icon' icon="user" />
+            We aim to help you develop a better self</p>
         </div>
     </div>
   </div>
@@ -16,6 +15,7 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import FuncBar from "@/components/FuncBar.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import router from '@/router/index.js';
 
@@ -32,7 +32,8 @@ export default {
     }
   },
   components: {
-      NavBar
+      NavBar,
+      FuncBar
   },
   beforeMount() {
     const auth = getAuth();      
@@ -55,17 +56,13 @@ export default {
     font-family: 'Lato';
 }
 
-#icon {
-  color: blue;
-}
-
 body {
   width: 60%;
   margin: auto;
-  padding-top: 8rem;
 }
 
 #maincontainer {
+  margin-top: 8rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }

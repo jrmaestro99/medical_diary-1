@@ -1,9 +1,11 @@
 <template>
-    <NavBar/>
-    <div v-if="user">
-        <div id="content">
-            <Chart/>
-        </div>
+    <div id='maincontainer'>
+      <NavBar/>
+      <div v-if="user">
+          <div id="content">
+              <Chart/>
+          </div>
+      </div>
     </div>
 </template>
 
@@ -42,7 +44,11 @@ export default {
 body{
   width: 60%;
   margin: auto;
-  padding-top: 8rem;
+  /* padding-top: 8rem; */
+}
+
+#maincontainer {
+  margin-top: 8rem;
 }
 
 #content {
