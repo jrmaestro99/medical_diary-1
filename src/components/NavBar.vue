@@ -29,9 +29,6 @@ export default {
 </script>
 
 <style>
-body{
-    background:#1D4746;
-}
 
 #nav {
   display: flex;
@@ -41,38 +38,34 @@ body{
 #nav a button {
   border: none;
   background: none;
-  color:#fff;
+  color: #ADBAC7;
   font-size: 18px;
 }
 
 #nav a {
   width: auto;
+  background: #2D333B;
   font-weight: bold;
   padding: 1rem;
   text-align: center;
-  background: #343436;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  /* border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
   font-weight: bold;
-  color: #fff;
-  margin: auto 0;
+  margin: auto;
 }
 
 #nav a:hover {
-  background: #666669;
+  border-bottom: .15px solid #ADBAC7;
 }
 
 #nav a.router-link-exact-active {
-  background: #fff;
   font-weight: bolder;
-  color: #000;
-  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
+  border-bottom: .2px solid #EC775C;
   z-index: 2;
 }
 
 #nav a.router-link-exact-active button {
   /* color: rgb(0, 150, 100); */
   font-weight: bolder;
-  color: #000;
 }
 </style>

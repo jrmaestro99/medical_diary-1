@@ -1,28 +1,27 @@
 <template>
   <div style="text-align:center;" v-if="user">
     <h3>Page Not Found !! </h3>
-    <h4>Please click on the above available options</h4>
-    <Logout/>
+    <h4>Please proceed to the main page</h4>
+    <button @click='redirect'>Main Page</button>
     <br>
   </div>
 </template>
 
 <script>
-import Logout from '@/components/Logout.vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import router from '@/router/index.js';
 
 
 export default {
-    name:"NotFound" ,
-
-    components:{
-        Logout
-    },
-
+    name:"NotFound",
     data() {
         return {
             user:false,        
+        }
+    },
+    methods: {
+        redirect() {
+            router.push('/');
         }
     },
     beforeMount() {
@@ -38,3 +37,9 @@ export default {
     }
 }   
 </script>
+
+<style scoped>
+h3, h4 {
+    color: #ADBAC7;
+}
+</style>

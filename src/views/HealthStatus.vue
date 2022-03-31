@@ -40,14 +40,12 @@ export default {
 
 <style>
 body{
-  background:#1D4746;
   width: 60%;
   margin: auto;
   padding-top: 8rem;
 }
 
 #content {
-  background-color: aliceblue;
   padding: 4rem;
   padding-bottom: 2rem;
   padding-top: 2rem;

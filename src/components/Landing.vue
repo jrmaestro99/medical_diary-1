@@ -29,8 +29,8 @@ export default {
 @import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
 
 
-body{
-    background:#1D4746;
+body {
+    background: #22272e;
 }
 
 #container {
