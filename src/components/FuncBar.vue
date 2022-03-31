@@ -8,20 +8,21 @@
 </template>
 
 <script>
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 export default {
   name: 'FuncBar',
   beforeMount() {
     const auth = getAuth();      
-    this.user = auth.currentUser;
-    if (!this.user) {
-      this.$router.push('/login');
-    }
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.username = auth.currentUser.displayName;
+      }
+    })
   },
   data() {
     return {
-      username: ''
+      username: '',
     }
   },
   methods: {

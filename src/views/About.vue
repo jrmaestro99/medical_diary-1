@@ -16,7 +16,7 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import FuncBar from "@/components/FuncBar.vue";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   name: 'Main',
@@ -36,10 +36,11 @@ export default {
   },
   beforeMount() {
     const auth = getAuth();      
-    this.user = auth.currentUser;
-    if (!this.user) {
-      this.$router.push('/login');
-    }
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user;
+      }
+    })
   }
 }
 </script>

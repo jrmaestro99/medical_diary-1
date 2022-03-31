@@ -84,9 +84,8 @@ export default {
     cursor: pointer;
 }
 
-#mainHeadLink{
-    color:#E5C6B3;
-    text-decoration: none;
+#mainHead:hover{
+    color:#fbe4d5;
 }
 
 #bg{
