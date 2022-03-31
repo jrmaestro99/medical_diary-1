@@ -1,25 +1,23 @@
 <template>
   <div id="funcnav">
     <span>Hello, {{username}}</span>
-    <a href="" @click="signOut">
+    <div id='signout' @click="signOut">
         <font-awesome-icon id='icon' icon="sign-out" size="lg"/> Logout
-    </a>
+    </div>
   </div>
 </template>
 
 <script>
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 
 export default {
   name: 'FuncBar',
   beforeMount() {
     const auth = getAuth();      
     this.user = auth.currentUser;
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        this.username = user.displayName;      
-      }
-    });
+    if (!this.user) {
+      this.$router.push('/login');
+    }
   },
   data() {
     return {
@@ -50,6 +48,10 @@ export default {
     margin-top: 2rem;
     color: #ADBAC7;
     font-family: 'Noto Sans';
+}
+
+#signout {
+  cursor: pointer;
 }
 
 a {

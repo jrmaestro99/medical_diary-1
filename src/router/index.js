@@ -7,19 +7,18 @@ import Login from '@/components/Login.vue'
 import Landing from '@/components/Landing.vue'
 import { getAuth, onAuthStateChanged} from "firebase/auth"
 
-function isAuthenticated() {
+function isAuthenticated(to) {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-        if (!user) {
-            alert("You have not logged into you account!").then(() => {
-                return {
-                    path: "/login",
-                    name: "Login",
-                    component: Login
-                }
-            });
+        if (!user && to.name !== 'Login') {
+            alert("You have not logged into you account.");
+            return {
+                path: "/login",
+                name: "Login",
+                component: Login
+            }
         }
-    });
+    })
 }
 
 const routes = [
@@ -47,7 +46,7 @@ const routes = [
     },
     {
         path: '/graph',
-        name: 'Health Status Checker Graph',
+        name: 'Graph',
         component: HealthStatus,
         beforeEnter: [isAuthenticated]
     },
@@ -61,4 +60,5 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
+
 export default router

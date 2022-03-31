@@ -9,8 +9,6 @@
 
 <script>
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import router from '@/router/index.js';
-
 
 export default {
     name:"NotFound",
@@ -21,7 +19,7 @@ export default {
     },
     methods: {
         redirect() {
-            router.push('/');
+            this.$router.push('/');
         }
     },
     beforeMount() {
@@ -31,7 +29,7 @@ export default {
             if (user) {
                 this.user = user;      
             } else {
-                router.push('/login');
+                this.$router.push('/login');
             }
         })
     }

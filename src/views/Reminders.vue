@@ -1,4 +1,5 @@
 <template>
+  <FuncBar/>
   <div id="maincontainer">
     <NavBar/>
     <div v-if='user'>
@@ -11,10 +12,9 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import FuncBar from "@/components/FuncBar.vue";
+import { getAuth } from "firebase/auth";
 import Table from "@/components/Table.vue";
-import router from '@/router/index.js';
-
 
 export default {
     name: 'Reminders',
@@ -25,18 +25,15 @@ export default {
     },
     components: {
         Table,
-        NavBar
+        NavBar,
+        FuncBar
     },
     beforeMount() {
       const auth = getAuth();      
       this.user = auth.currentUser;
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          this.user = user;      
-        } else {
-          router.push('/login');
-        }
-      })
+      if (!this.user) {
+        this.$router.push('/login');
+      }
     }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
     <div id='login' style="text-align:center;">
-        <a href="" id="mainHeadLink" @click="main">
-            <h1  id="mainHead">Medical Diary</h1>
-        </a>
+        <div id="mainHeadLink" @click="main">
+            <h1 id="mainHead">Medical Diary</h1>
+        </div>
         <div id="firebaseui-auth-container"></div>
         <div id="pagecontent">
             Medical Diary is an app to keep track of your medical subscriptions and appointments. <br>
@@ -17,13 +17,12 @@ import firebase from '@/uifire.js'
 import 'firebase/compat/auth';
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
-import router from '@/router/index.js';
 
 export default {
     name:"Login",
     methods: {
         main() {
-            router.push('/');
+            this.$router.push('/');
         }
     },
     mounted() {
@@ -81,7 +80,8 @@ export default {
 #mainHead{
     text-align: center;
     font-family: 'Noto Sans';
-    color:#E5C6B3
+    color:#E5C6B3;
+    cursor: pointer;
 }
 
 #mainHeadLink{
