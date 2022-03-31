@@ -187,7 +187,7 @@ export default {
         filterby() {
             if (this.filter) {
                 let today = new Date();
-                let ago = new Date(today.getTime() - (3 * 24 * 60 * 60 * 1000));
+                let ago = new Date(today.getTime() - (7 * 24 * 60 * 60 * 1000)); // get the datetime of 7 days ago
 
                 var tempbp = Object.assign({}, this.bp);
                 var tempwg = Object.assign({}, this.wg);

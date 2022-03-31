@@ -5,17 +5,20 @@ import HealthStatus from '@/views/HealthStatus.vue'
 import NotFound from '@/views/NotFound.vue'
 import Login from '@/components/Login.vue'
 import Landing from '@/components/Landing.vue'
-import { getAuth } from "firebase/auth"
+import { getAuth, onAuthStateChanged} from "firebase/auth"
 
 function isAuthenticated() {
-    const auth = getAuth();      
-    if (!auth.currentUser) {
-        return {
-            path: "/login",
-            name: "Login",
-            component: Login
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (!user) {
+            alert("You have not logged into you account!");
+            return {
+                path: "/login",
+                name: "Login",
+                component: Login
+            }
         }
-    }
+    });
 }
 
 const routes = [
