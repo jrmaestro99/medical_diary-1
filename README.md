@@ -24,5 +24,5 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Credit
- - [David Tan](https://github.com/DavidTan0527) (advice on router authentication)
- - [Tan Kel Zin](https://github.com/MechFroG88) (advice on frontend design)
+ - [David Tan](https://github.com/DavidTan0527) (NUS Y2 computer science student, advice on router authentication)
+ - [Tan Kel Zin](https://github.com/MechFroG88) (NUS Y2 computer science student, advice on frontend design)
