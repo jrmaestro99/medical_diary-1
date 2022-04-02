@@ -1,4 +1,5 @@
 <template>
+<!-- button css from https://getcssscan.com/css-buttons-examples -->
     <div id="header"><b>My Reminders</b></div>
     <table id="table">
     <tr>
@@ -29,6 +30,7 @@ export default {
     this.user = auth.currentUser.email;
     async function display(user) {
         let z = await getDocs(collection(db, user));
+        let tb = document.getElementById("table");
         let index = 1;
         z.forEach((docs) => {
           let yy = docs.data();
@@ -55,6 +57,18 @@ export default {
           var deleteButton = document.createElement("button");
           deleteButton.id = "deleteButton";
           deleteButton.innerHTML = "Delete";
+
+          var styleDelete = document.createElement('style');
+          styleDelete.type = 'text/css';
+          styleDelete.innerHTML = '#deleteButton { background-color: #FFFFFF;' + 'border: 1px solid rgb(209,213,219);' + 'border-radius: .5rem;'
+          + 'box-sizing: border-box;' + 'color: #111827;'
+          + 'font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";' + 'font-size: .875rem;'
+          + 'font-weight: 600;' + 'line-height: 0.25rem;' + 'padding: .75rem 1rem;' 
+          + 'text-align: center;' + 'text-decoration: none #D1D5DB solid;' + 'text-decoration-thickness: auto;' 
+          + 'box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);' + 'cursor: pointer;' + 'user-select: none;' + '-webkit-user-select: none;' + 'touch-action: manipulation; }'
+
+          document.head.appendChild(styleDelete);
+
           deleteButton.onclick = function(){
                 confirmDelete(String(medName), user)
             }
@@ -64,13 +78,27 @@ export default {
           var editButton = document.createElement("button");
           editButton.id = "editButton";
           editButton.innerHTML = "Edit";
+
+          var style = document.createElement('style');
+          style.type = 'text/css';
+          style.innerHTML = '#editButton { background-color: #FFFFFF;' + 'border: 1px solid rgb(209,213,219);' + 'border-radius: .5rem;'
+          + 'box-sizing: border-box;' + 'color: #111827;'
+          + 'font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";' + 'font-size: .875rem;'
+          + 'font-weight: 600;' + 'line-height: 0.25rem;' + 'padding: .75rem 1rem;' 
+          + 'text-align: center;' + 'text-decoration: none #D1D5DB solid;' + 'text-decoration-thickness: auto;' 
+          + 'box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);' + 'cursor: pointer;' + 'user-select: none;' + '-webkit-user-select: none;' + 'touch-action: manipulation; }'
+
+          document.head.appendChild(style);
+
           editButton.onclick = function(){
                 editReminder(medName, medFunction, medDosage, cell1, cell2, cell3)
             }
           cell6.appendChild(editButton);
 
           index += 1;
+          
         })
+        tb.deleteRow(1)
     }
     display(String(this.user))
     this.showReminder()
@@ -82,7 +110,7 @@ export default {
       while (table.rows.length > 1){
         table.deleteRow(1)
       }
-      display(String(this.user))
+      display(String(user))
     }
 
     async function confirmDelete(reminder, user) {
@@ -182,7 +210,7 @@ export default {
           catch(error) {
             console.error("Error adding document: ", error);
           }
-        location.reload();
+        //location.reload();
       } else { //if the original table cell;s entry has been deleted and is now null     
         var newMedDosage=document.getElementById("newmeddosage").value;
         var newMedFunction=document.getElementById("newmedfunction").value;
@@ -225,4 +253,75 @@ table {
 th, td {
     border: 1px solid black
 }
+
+
+
+
+#addbutton {
+  background-color: #FFFFFF;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 0.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* #addbutton:hover {
+  background-color: rgb(249,250,251);
+}
+
+#addbutton:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+#addbutton:focus-visible {
+  box-shadow: none;
+} */
+
+#savebutton {
+  background-color: #FFFFFF;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 0.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* #savebutton:hover {
+  background-color: rgb(249,250,251);
+}
+
+#savebutton:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+#savebutton:focus-visible {
+  box-shadow: none;
+} */
 </style>
