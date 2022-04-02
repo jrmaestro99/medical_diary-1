@@ -12,21 +12,21 @@
     </select><br><br>
 
     <div class="input" v-if="health=='Blood Pressure'">
-        <label for="bpinput">Blood Pressure Today </label>
+        <label for="bpinput">Blood Pressure</label>
         <input type="number" id="bpinput" v-model.lazy="savedbp" required><br><br>
         <button id = "bpsave" type = "button" @click = "savetofb($event, this.bpdoc, this.savedbp, 'Blood Pressure')"><b>Save</b></button><br><br>
     </div>
 
     <div class="input" v-if="health=='Weight'">
-        <label for="wginput">Weight Today </label>
+        <label for="wginput">Weight</label>
         <input type="number" id="wginput" v-model.lazy="savedwg" required><br><br>
         <button id = "wgsave" type = "button" @click = "savetofb($event, this.wgdoc, this.savedwg, 'Weight')"><b>Save</b></button><br><br>
     </div>
 
     <div class="input" v-if="health=='Both'">
-        <label for="bpinput">Blood Pressure Today </label>
+        <label for="bpinput">Blood Pressure</label>
         <input type="number" id="bpinput" v-model.lazy="savedbp" required><br>
-        <label for="wginput">Weight Today </label>
+        <label for="wginput">Weight</label>
         <input type="number" id="wginput" v-model.lazy="savedwg" required><br><br>
         <button id = "bsave" type = "button" @click = "save($event, this.bpdoc, this.wgdoc, this.savedbp, this.savedwg);"><b>Save</b></button><br><br>
     </div>
@@ -226,7 +226,7 @@ export default {
 .input {
     margin: auto;
     width: 60%;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px 1.5px;
+    box-shadow: #ADBAC780 0px 0px 5px 1.5px;
 }
 
 .input label {
