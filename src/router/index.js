@@ -5,6 +5,7 @@ import HealthStatus from '@/views/HealthStatus.vue'
 import NotFound from '@/views/NotFound.vue'
 import Login from '@/components/Login.vue'
 import Landing from '@/components/Landing.vue'
+import QuickLinks from "@/components/QuickLinks.vue";
 import { getAuth, onAuthStateChanged} from "firebase/auth"
 
 function isAuthenticated(to) {
@@ -48,6 +49,12 @@ const routes = [
         path: '/graph',
         name: 'Graph',
         component: HealthStatus,
+        beforeEnter: [isAuthenticated]
+    },
+    {
+        path: '/links',
+        name: 'Links',
+        component: QuickLinks,
         beforeEnter: [isAuthenticated]
     },
     {
