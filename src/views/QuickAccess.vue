@@ -15,15 +15,24 @@
 import NavBar from "@/components/NavBar.vue";
 import FuncBar from "@/components/FuncBar.vue";
 import { getAuth } from "firebase/auth";
-import MedicalMap from "@/components/MedicalMap.vue";
+// import MedicalMap from "@/components/MedicalMap.vue";
 import QuickLinks from "@/components/QuickLinks.vue";
 
 export default {
   name: 'QuickAccess',
   components: {
-      MedicalMap,
-      QuickLinks
+      // MedicalMap,
+      QuickLinks,
+      NavBar,
+      FuncBar
   },
+  beforeMount() {
+    const auth = getAuth();      
+    this.user = auth.currentUser;
+    if (!this.user) {
+      this.$router.push('/login');
+    }
+  }
 }
 </script>
 

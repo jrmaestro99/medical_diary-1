@@ -1,14 +1,13 @@
 <template>
     <h1>Medical Map</h1>
-        <h2>Locate hospitals near you!</h2>
-        <div class="map">
-            <iframe src="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F" 
-            width="640" 
-            height="480">
-            </iframe>
-        </div>
-
-  <h1> Quick Links </h1>
+    <h2>Locate hospitals near you!</h2>
+    <div class="map">
+        <iframe src="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F" 
+        width="640" 
+        height="480">
+        </iframe>
+    </div>
+    <h1> Quick Links </h1>
     <h2> Convenient links for your healthcare needs </h2>
 
     <section class="container">
@@ -31,13 +30,11 @@
             <a href="https://www.moh.gov.sg/covid-19-phase-advisory" target="_blank" rel="noopener noreferrer" class="button">Click here</a>
         </div>
     </section>
-
-
 </template>
 
 <script>
 export default {
-
+    name: 'QuickLinks',
 }
 </script>
 
