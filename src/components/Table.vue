@@ -1,4 +1,5 @@
 <template>
+<!-- button css from https://getcssscan.com/css-buttons-examples -->
     <div id="header"><b>My Reminders</b></div>
     <table id="table">
     <tr>
