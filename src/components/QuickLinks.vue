@@ -49,19 +49,25 @@ export default {
     font-family: 'Noto Sans';
 }
 
+.map {
+    margin: 2rem;
+}
+
 .container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 2rem;
 
 }
 
 .card {
-    background: antiquewhite;
+    background:antiquewhite; 
     width: 270px;
     height: 375px;
     margin: 10px;
     border-radius: 15px;
+    color: #22272e;
 }
 
 .card-image {

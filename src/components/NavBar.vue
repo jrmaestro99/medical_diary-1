@@ -20,10 +20,10 @@ export default {
     return {
       links: [
         { url: "/about", name: "About" },
-        { url: "/reminders", name: "My Reminders" },
-        { url: "/note", name: "My Notes" },
-        { url: "/graph", name: "Health Graph" },
-        { url: "/links", name: "Quick Access"}
+        { url: "/reminders", name: "Reminders" },
+        { url: "/note", name: "Notes" },
+        { url: "/graph", name: "Graph" },
+        { url: "/links", name: "Visits"}
       ]
     }
   }
