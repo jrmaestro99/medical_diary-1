@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import About from '@/views/About.vue'
 import Reminders from '@/views/Reminders.vue'
+import Note from '@/views/Note.vue'
 import HealthStatus from '@/views/HealthStatus.vue'
 import NotFound from '@/views/NotFound.vue'
 import Login from '@/components/Login.vue'
@@ -43,6 +44,12 @@ const routes = [
         path: '/reminders',
         name: 'Reminders',
         component: Reminders,
+        beforeEnter: [isAuthenticated]
+    },
+    {
+        path: '/note',
+        name: 'Note',
+        component: Note,
         beforeEnter: [isAuthenticated]
     },
     {
