@@ -21,6 +21,7 @@ export default {
       links: [
         { url: "/about", name: "About" },
         { url: "/reminders", name: "My Reminders" },
+        { url: "/note", name: "My Notes" },
         { url: "/graph", name: "Health Graph" },
         { url: "/links", name: "Quick Access"}
       ]
