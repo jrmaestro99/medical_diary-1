@@ -7,8 +7,8 @@
 import firebaseApp from '../firebase.js';
 import { deleteDoc, getFirestore, doc, orderBy } from "firebase/firestore";
 import { collection, getDocs,setDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
-// import { getAuth } from "firebase/auth";
 const db = getFirestore(firebaseApp);
 
 export default { 
