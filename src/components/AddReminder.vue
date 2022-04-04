@@ -1,0 +1,111 @@
+<template>
+  <div class="container">
+      <form id="myform">
+          <h2 id="header"><u><i>Add New Reminder</i></u></h2>
+          <br>
+
+          <div class="formlist">
+                <label for = "medicine name"> <h3>Medicine:</h3> </label>
+                <input type = "text" id="medname" required="" placeholder="Enter medication">
+                <br><br>
+                <label for = "medicine function"> <h3>Function:</h3> </label>
+                <input type = "text" id="medfunction" required="" placeholder="Enter function">
+                <br><br>
+                <label for = "medicine dosage"> <h3>Dosage:</h3> </label>
+                <input type = "text" id="meddosage" required="" placeholder="Enter dosage">
+                <br><br>
+
+                <div class="save">
+                    <button id="saveButton" type="button" @click="savetofs()"> Save Reminder! </button>
+                </div>
+          </div>
+      </form>
+  </div>
+</template>
+
+<script>
+import firebaseApp from "../firebase.js";
+import { getFirestore } from '@firebase/firestore';
+import { doc, setDoc } from "firebase/firestore"; //collection, getDoc
+import { getAuth } from "firebase/auth";
+const db = getFirestore(firebaseApp)
+
+export default {
+    data(){
+        return{
+            medName:"", medDosage:"", medFunction:""
+        }
+    },
+
+    methods : {
+        async savetofs() {
+            const auth = getAuth();
+            this.user = auth.currentUser.email;
+                var medName=document.getElementById("medname").value;
+                var medDosage=document.getElementById("meddosage").value;  
+                var medFunction=document.getElementById("medfunction").value;
+                alert("Saving your reminder");
+
+                try{
+                const docRef = await setDoc(doc(db, String(this.user), medName),{
+                Function:medFunction, Dosage: medDosage, "MedicineName": medName,
+                })
+                document.getElementById('myform').reset();
+                console.log(docRef)
+                this.$emit("added")
+                }
+                catch(error) {
+                    console.error("Error adding document: ", error);
+                }
+        }
+    }
+}
+
+</script>
+
+<style scoped>
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
+* {
+    font-family: 'Noto Sans';
+}
+#myform {      
+    text-align: center;
+    align-items: center;
+    margin: auto;
+}
+
+label{
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+}
+
+#savebutton {
+    display: inline-block;
+}
+
+input{
+    width: auto
+}
+
+#saveButton{
+  background-color: #FFFFFF;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 0.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+</style>
