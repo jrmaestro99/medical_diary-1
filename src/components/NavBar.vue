@@ -42,6 +42,7 @@ export default {
   background: none;
   color: #ADBAC7;
   font-size: 18px;
+  cursor: pointer;
 }
 
 #nav a {
@@ -58,12 +59,12 @@ export default {
 
 #nav a:hover {
   border-bottom: .15px solid #ADBAC7;
+  cursor: pointer;
 }
 
 #nav a.router-link-exact-active {
   font-weight: bolder;
   border-bottom: .2px solid #EC775C;
-  z-index: 2;
 }
 
 #nav a.router-link-exact-active button {

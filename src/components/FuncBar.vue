@@ -1,8 +1,8 @@
 <template>
   <div id="funcnav">
-    <span>Hello, {{username}}</span>
+    <span>Hello, <font-awesome-icon class='icon' icon="user"/> {{username}}</span>
     <div id='signout' @click="signOut">
-        <font-awesome-icon id='icon' icon="sign-out" size="lg"/> Logout
+        <font-awesome-icon class='icon' icon="sign-out" size="lg"/> Logout
     </div>
   </div>
 </template>
@@ -53,6 +53,11 @@ export default {
 
 #signout {
   cursor: pointer;
+}
+
+.icon {
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
 }
 
 a {
