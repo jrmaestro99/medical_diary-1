@@ -11,23 +11,23 @@
     <h2> Convenient links for your healthcare needs </h2>
 
     <section class="container">
-        <div class="card">
+        <div class="card" @click="open($event, 'https://doctoranywhere.com')">
             <div class="card-image doctor-anywhere"></div>
             <h2>Doctor Anywhere</h2>
             <p>Consult an online doctor</p>
-            <a href="https://doctoranywhere.com" target="_blank" rel="noopener noreferrer" class="button">Click here</a>
+            <!-- <a href="https://doctoranywhere.com" target="_blank" rel="noopener noreferrer" class="button">Click here</a> -->
         </div>
-        <div class="card">
-            <div class="card-image axs"></div>
+        <div class="card" @click="open($event, 'https://e-station2.axs.com.sg/AXSOnline/core_adhoc/healthcare.php')">
+            <div class="card-image axs" @click="open"></div>
             <h2>AXS Payment</h2>
             <p>Make payment for your healthcare bills</p>
-            <a href="https://e-station2.axs.com.sg/AXSOnline/core_adhoc/healthcare.php" target="_blank" rel="noopener noreferrer" class="button">Click here</a>
+            <!-- <a href="https://e-station2.axs.com.sg/AXSOnline/core_adhoc/healthcare.php" target="_blank" rel="noopener noreferrer" class="button">Click here</a> -->
         </div>
-        <div class="card">
+        <div class="card" @click="open($event, 'https://www.moh.gov.sg/covid-19-phase-advisory')">
             <div class="card-image covid-guide"></div>
             <h2>Covid-19 Updates</h2>
             <p>Get the latest Covid-19 news</p>
-            <a href="https://www.moh.gov.sg/covid-19-phase-advisory" target="_blank" rel="noopener noreferrer" class="button">Click here</a>
+            <!-- <a href="https://www.moh.gov.sg/covid-19-phase-advisory" target="_blank" rel="noopener noreferrer" class="button">Click here</a> -->
         </div>
     </section>
 </template>
@@ -35,6 +35,13 @@
 <script>
 export default {
     name: 'QuickLinks',
+    methods: {
+        open(event, link) {
+            let yourWindow = window.open();
+            yourWindow.opener = null;
+            yourWindow.location = link;
+        }
+    }
 }
 </script>
 
@@ -96,7 +103,7 @@ export default {
 
 .card p {
     padding: 10px;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .button {

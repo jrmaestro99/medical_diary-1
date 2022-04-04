@@ -7,7 +7,7 @@
       :style="{
         'width': `calc(100%/${links.length})`
       }">
-      <button>{{ link.name }}</button>
+      <button> <font-awesome-icon v-bind:icon="link.icon"/> {{ link.name }}</button>
     </router-link>
   </div>
   
@@ -19,11 +19,11 @@ export default {
   data() {
     return {
       links: [
-        { url: "/about", name: "About" },
-        { url: "/reminders", name: "Reminders" },
-        { url: "/note", name: "Notes" },
-        { url: "/graph", name: "Graph" },
-        { url: "/links", name: "Visits"}
+        { url: "/about", name: "About", icon: "circle-info"  },
+        { url: "/reminders", name: "Reminders", icon: "bell" },
+        { url: "/note", name: "Notes", icon: "notes-medical"  },
+        { url: "/graph", name: "Graph", icon: "chart-line"  },
+        { url: "/links", name: "Links", icon: "link" }
       ]
     }
   }
