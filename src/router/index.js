@@ -14,7 +14,7 @@ function isAuthenticated(to) {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if (!user && to.name !== 'Login') {
-            alert("You have not logged into your account.");
+            // alert("You have not logged into your account.");
             return {
                 path: "/login",
                 name: "Login",
