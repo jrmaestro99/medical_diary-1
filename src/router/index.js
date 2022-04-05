@@ -7,6 +7,7 @@ import NotFound from '@/views/NotFound.vue'
 import Login from '@/components/Login.vue'
 import Landing from '@/components/Landing.vue'
 import QuickAccess from "@/views/QuickAccess.vue";
+import Calendar from '@/views/Calendar.vue'
 import { getAuth, onAuthStateChanged} from "firebase/auth"
 
 function isAuthenticated(to) {
@@ -63,6 +64,13 @@ const routes = [
         name: 'Links',
         component: QuickAccess,
         beforeEnter: [isAuthenticated]
+    },
+    {
+        path: '/calendar',
+        name: 'Calendar',
+        component: Calendar,
+        beforeEnter: [isAuthenticated]
+
     },
     {
         path: '/:catchAll(.*)',

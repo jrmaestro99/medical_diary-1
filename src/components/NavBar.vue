@@ -23,7 +23,8 @@ export default {
         { url: "/reminders", name: "Reminders", icon: "bell" },
         { url: "/note", name: "Notes", icon: "notes-medical"  },
         { url: "/graph", name: "Graph", icon: "chart-line"  },
-        { url: "/links", name: "Links", icon: "link" }
+        { url: "/links", name: "Links", icon: "link" },
+        { url : "/calendar", name : "Calendar"}
       ]
     }
   }
