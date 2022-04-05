@@ -1,5 +1,5 @@
 <template>
-<h2><u><i>My Reminders</i></u></h2>
+<h2><u>My Reminders</u></h2>
 <div id="tablebg">
 <table id="table">
   <tr>

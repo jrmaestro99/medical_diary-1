@@ -1,18 +1,18 @@
 <template>
   <div class="container">
       <form id="myform">
-          <h2 id="header"><u><i>Add New Reminder</i></u></h2>
+          <h2 id="header"><u>Add New Reminder</u></h2>
           <br>
 
           <div class="formlist">
-                <label for = "medicine name"> <h3>Medicine:</h3> </label>
-                <input type = "text" id="medname" required="" placeholder="Enter medication">
+                <label for = "medicine name"> <h3>Medicine : </h3> </label>
+                <input type = "text" id="medname" required="" placeholder="E.g. Vitamin C">
                 <br><br>
-                <label for = "medicine function"> <h3>Function:</h3> </label>
-                <input type = "text" id="medfunction" required="" placeholder="Enter function">
+                <label for = "medicine function"> <h3>Function : </h3> </label>
+                <input type = "text" id="medfunction" required="" placeholder="E.g. Boost immunity">
                 <br><br>
-                <label for = "medicine dosage"> <h3>Dosage:</h3> </label>
-                <input type = "text" id="meddosage" required="" placeholder="Enter dosage">
+                <label for = "medicine dosage"> <h3>Dosage : </h3> </label>
+                <input type = "text" id="meddosage" required="" placeholder="E.g. Twice a day">
                 <br><br>
 
                 <div class="save">
@@ -85,7 +85,8 @@ label{
 }
 
 input{
-    width: auto
+    width: auto;
+    margin-left: 10px;
 }
 
 #saveButton{
