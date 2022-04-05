@@ -22,9 +22,9 @@ export default {
         { url: "/about", name: "About", icon: "circle-info"  },
         { url: "/reminders", name: "Reminders", icon: "bell" },
         { url: "/note", name: "Notes", icon: "notes-medical"  },
+        { url : "/calendar", name : "Calendar", icon: "calendar"},
         { url: "/graph", name: "Graph", icon: "chart-line"  },
-        { url: "/links", name: "Links", icon: "link" },
-        { url : "/calendar", name : "Calendar"}
+        { url: "/links", name: "Links", icon: "link" }
       ]
     }
   }
