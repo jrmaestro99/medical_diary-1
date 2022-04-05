@@ -40,6 +40,7 @@ export default {
   mounted() {
       const auth = getAuth();
       this.user = auth.currentUser.email;
+      this.showReminder();
 
       async function display(user) {
       let z = await getDocs(collection(db, user))
@@ -245,7 +246,13 @@ export default {
           }
         display(user);
     }
+    },
+    methods : {
+      async showReminder() {
+        alert("Have you taken your medicine?")
+      }
     }
+
 }
 
 </script>
