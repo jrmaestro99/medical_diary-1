@@ -62,7 +62,7 @@ export default {
 }
 
 #login {
-    margin-top: 8rem;
+    margin-top: 2rem;
 }
 
 #pagecontent{

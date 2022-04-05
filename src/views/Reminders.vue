@@ -55,7 +55,6 @@ export default {
 body{
   width: 60%;
   margin: auto;
-  /* padding-top: 8rem; */
 }
 
 #maincontainer {

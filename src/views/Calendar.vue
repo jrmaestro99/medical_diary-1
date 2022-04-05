@@ -1,16 +1,20 @@
 <template>
-  <NavBar/>
-  <div v-if='user'>
-    <div id='content'>
-      <CalendarTable/>
-        <br>
-        <CalendarTableCalendar/>
+  <FuncBar/>
+  <div id='maincontainer'>
+    <NavBar/>
+    <div v-if='user'>
+      <div id='content'>
+        <CalendarTable/>
+          <br>
+          <CalendarTableCalendar/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import FuncBar from "@/components/FuncBar.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import CalendarTable from "@/components/CalendarTable.vue";
 import router from '@/router/index.js';
@@ -25,6 +29,7 @@ export default {
         }
     },
     components: {
+        FuncBar,
         CalendarTable,
         NavBar,
         CalendarTableCalendar
@@ -45,10 +50,14 @@ export default {
 
 <style>
 body{
-  /* background:#1D4746; */
   width: 60%;
   margin: auto;
-  padding-top: 8rem;
+}
+
+#maincontainer {
+  margin-top: 8rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 #content {
