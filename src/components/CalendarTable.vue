@@ -63,7 +63,7 @@ export default {
         })
     }
     display(String(this.user))
-    this.showReminder()
+    // this.showReminder()
 
     async function delReminder(reminder, user) {
       await deleteDoc(doc(db, user, reminder))
@@ -116,9 +116,9 @@ export default {
 
   },
   methods: {
-    showReminder() {
-      alert("Have you taken your medicine?")
-    },
+    // showReminder() {
+    //   alert("Have you taken your medicine?")
+    // },
 
     async createReminder() {
       let table = document.getElementById("table")

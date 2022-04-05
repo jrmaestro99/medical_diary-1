@@ -1,22 +1,22 @@
 <template>
   <div class="container">
       <form id="myform">
-          <h2 id="header"><u><i>Add New Reminder</i></u></h2>
+          <h2 id="header">Add New Reminder</h2>
           <br>
 
           <div class="formlist">
-                <label for = "medicine name"> <h3>Medicine:</h3> </label>
-                <input type = "text" id="medname" required="" placeholder="Enter medication">
+                <label for = "medicine name"> <h3>Medicine : </h3> </label>
+                <input type = "text" id="medname" required="" placeholder="E.g. Vitamin C">
                 <br><br>
-                <label for = "medicine function"> <h3>Function:</h3> </label>
-                <input type = "text" id="medfunction" required="" placeholder="Enter function">
+                <label for = "medicine function"> <h3>Function : </h3> </label>
+                <input type = "text" id="medfunction" required="" placeholder="E.g. Boost immunity">
                 <br><br>
-                <label for = "medicine dosage"> <h3>Dosage:</h3> </label>
-                <input type = "text" id="meddosage" required="" placeholder="Enter dosage">
+                <label for = "medicine dosage"> <h3>Dosage : </h3> </label>
+                <input type = "text" id="meddosage" required="" placeholder="E.g. Twice a day">
                 <br><br>
 
                 <div class="save">
-                    <button id="saveButton" type="button" @click="savetofs()"> Save Reminder! </button>
+                    <button id="saveButton" type="button" @click="savetofs()"> Save Reminder </button>
                 </div>
           </div>
       </form>
@@ -68,6 +68,11 @@ export default {
 * {
     font-family: 'Noto Sans';
 }
+
+.container {
+    margin-right: 50px;
+}
+
 #myform {      
     text-align: center;
     align-items: center;
@@ -80,25 +85,26 @@ label{
     width: 100px;
 }
 
-#savebutton {
-    display: inline-block;
-}
-
 input{
-    width: auto
+    width: auto;
+    margin-left: 10px;
 }
 
 #saveButton{
-  background-color: #FFFFFF;
+  display: inline-block;
+  background-color: #373E47;
   border: 1px solid rgb(209,213,219);
   border-radius: .5rem;
   box-sizing: border-box;
-  color: #111827;
+  color:#ADBAC7;
+  border: 1px solid #444c56;
   font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-size: .875rem;
   font-weight: 600;
   line-height: 0.25rem;
-  padding: .75rem 1rem;
+  padding: .75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   text-align: center;
   text-decoration: none #D1D5DB solid;
   text-decoration-thickness: auto;

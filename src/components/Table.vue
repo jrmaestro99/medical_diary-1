@@ -1,5 +1,5 @@
 <template>
-<h2><u><i>My Reminders</i></u></h2>
+<h2>My Reminders</h2>
 <div id="tablebg">
 <table id="table">
   <tr>
@@ -58,7 +58,10 @@ export default {
 
           var styleRow = document.createElement('style');
           styleRow.type = 'text/css';
-          styleRow.innerHTML = '#row { background-color: rgb(242, 250, 255);' + 'border-bottom: 5px solid #22272e;' + 'height: 45px;}'
+          styleRow.innerHTML = '#row { background-color: rgb(179, 188, 194);' 
+          + 'border-bottom: 5px solid #22272e;' 
+          + 'color: rgb(60, 85, 102);'
+          + 'height: 45px;}'
           document.head.appendChild(styleRow);
 
           var medName = (yy.MedicineName);
@@ -81,12 +84,24 @@ export default {
           deleteButton.innerHTML = "Delete";
           var styleDelete = document.createElement('style');
           styleDelete.type = 'text/css';
-          styleDelete.innerHTML = '#deleteButton { background-color: #FFFFFF;' + 'border: 1px solid rgb(209,213,219);' + 'border-radius: .5rem;'
-          + 'box-sizing: border-box;' + 'color: #111827;'
-          + 'font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";' + 'font-size: .875rem;'
-          + 'font-weight: 600;' + 'line-height: 0.25rem;' + 'padding: .75rem 1rem;' 
-          + 'text-align: center;' + 'text-decoration: none #D1D5DB solid;' + 'text-decoration-thickness: auto;' 
-          + 'box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);' + 'cursor: pointer;' + 'user-select: none;' + '-webkit-user-select: none;' + 'touch-action: manipulation; }'
+          styleDelete.innerHTML = '#deleteButton { background-color: #FFFFFF;' 
+          + 'border: 1px solid rgb(209,213,219);' 
+          + 'border-radius: .5rem;'
+          + 'box-sizing: border-box;' 
+          + 'color: #111827;'
+          + 'font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";' 
+          + 'font-size: .875rem;'
+          + 'font-weight: 600;' 
+          + 'line-height: 0.25rem;' 
+          + 'padding: .75rem 1rem;' 
+          + 'text-align: center;'
+          + 'text-decoration: none #D1D5DB solid;' 
+          + 'text-decoration-thickness: auto;' 
+          + 'box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);' 
+          + 'cursor: pointer;' 
+          + 'user-select: none;'
+          + '-webkit-user-select: none;' 
+          + 'touch-action: manipulation; }'
           document.head.appendChild(styleDelete);
           deleteButton.onclick = function() {
            confirmDelete(String(medName), user);
@@ -98,12 +113,24 @@ export default {
           editButton.innerHTML = "Edit";
           var style = document.createElement('style');
           style.type = 'text/css';
-          style.innerHTML = '#editButton { background-color: #FFFFFF;' + 'border: 1px solid rgb(209,213,219);' + 'border-radius: .5rem;'
-          + 'box-sizing: border-box;' + 'color: #111827;'
-          + 'font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";' + 'font-size: .875rem;'
-          + 'font-weight: 600;' + 'line-height: 0.25rem;' + 'padding: .75rem 1rem;' 
-          + 'text-align: center;' + 'text-decoration: none #D1D5DB solid;' + 'text-decoration-thickness: auto;' 
-          + 'box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);' + 'cursor: pointer;' + 'user-select: none;' + '-webkit-user-select: none;' + 'touch-action: manipulation; }'
+          style.innerHTML = '#editButton { background-color: #FFFFFF;' 
+          + 'border: 1px solid rgb(209,213,219);' 
+          + 'border-radius: .5rem;'
+          + 'box-sizing: border-box;' 
+          + 'color: #111827;'
+          + 'font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";' 
+          + 'font-size: .875rem;'
+          + 'font-weight: 600;' 
+          + 'line-height: 0.25rem;' 
+          + 'padding: .75rem 1rem;' 
+          + 'text-align: center;' 
+          + 'text-decoration: none #D1D5DB solid;' 
+          + 'text-decoration-thickness: auto;' 
+          + 'box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);' 
+          + 'cursor: pointer;' 
+          + 'user-select: none;' 
+          + '-webkit-user-select: none;' 
+          + 'touch-action: manipulation; }'
           document.head.appendChild(style);
           editButton.onclick = function(){
                 editReminder(medName, medFunction, medDosage, cell1, cell2, cell3, cell6)
@@ -173,12 +200,24 @@ export default {
       saveButton.innerHTML = "Save";
       var styleSave = document.createElement('style');
       styleSave.type = 'text/css';
-      styleSave.innerHTML = '#saveButton { background-color: #FFFFFF;' + 'border: 1px solid rgb(209,213,219);' + 'border-radius: .5rem;'
-          + 'box-sizing: border-box;' + 'color: #111827;'
-          + 'font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";' + 'font-size: .875rem;'
-          + 'font-weight: 600;' + 'line-height: 0.25rem;' + 'padding: .75rem 1rem;' 
-          + 'text-align: center;' + 'text-decoration: none #D1D5DB solid;' + 'text-decoration-thickness: auto;' 
-          + 'box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);' + 'cursor: pointer;' + 'user-select: none;' + '-webkit-user-select: none;' + 'touch-action: manipulation; }'
+      styleSave.innerHTML = '#saveButton { background-color: #FFFFFF;' 
+          + 'border: 1px solid rgb(209,213,219);' 
+          + 'border-radius: .5rem;'
+          + 'box-sizing: border-box;' 
+          + 'color: #111827;'
+          + 'font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";' 
+          + 'font-size: .875rem;'
+          + 'font-weight: 600;' 
+          + 'line-height: 0.25rem;' 
+          + 'padding: .75rem 1rem;' 
+          + 'text-align: center;' 
+          + 'text-decoration: none #D1D5DB solid;'
+          + 'text-decoration-thickness: auto;' 
+          + 'box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);' 
+          + 'cursor: pointer;' 
+          + 'user-select: none;' 
+          + '-webkit-user-select: none;'
+          + 'touch-action: manipulation; }'
       document.head.appendChild(styleSave);      
       cell6.appendChild(saveButton)
       saveButton.onclick = function(){
@@ -240,6 +279,7 @@ table {
 th {
     /* border: 1px solid black; */
     border-bottom: 5px solid #22272e;
+    /* color:  */
     padding: 10px;
     border-radius: 20px;
     background-color: none;
