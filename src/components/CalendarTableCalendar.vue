@@ -120,7 +120,7 @@ export default {
 
       var modalBg = document.querySelector(".modal-bg")
       modalBg.classList.remove("bg-active")
-
+      alert("Event Added to Calendar!")
       modalBg.classList.remove("bg-active")
         document.getElementById("calendar").style.visibility = "visible"
     },
@@ -260,5 +260,8 @@ white-space: normal;
 .fc-day-grid-event > .fc-content {
    white-space: nowrap;
    overflow: hidden;
+}
+.fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
+  display : none
 }
 </style>
