@@ -120,6 +120,9 @@ export default {
 
       var modalBg = document.querySelector(".modal-bg")
       modalBg.classList.remove("bg-active")
+
+      modalBg.classList.remove("bg-active")
+        document.getElementById("calendar").style.visibility = "visible"
     },
         async getEvents() {
                 let eventList = []
@@ -160,12 +163,14 @@ export default {
       var modalBg = document.querySelector(".modal-bg")
       function displayModal(){
         modalBg.classList.add("bg-active");
+        document.getElementById("calendar").style.visibility = "hidden"
       }
       displayModal()
       window.scrollTo(0, 0);
       var modalClose = document.querySelector(".modal-close")
       modalClose.addEventListener("click", function () {
         modalBg.classList.remove("bg-active")
+        document.getElementById("calendar").style.visibility = "visible"
       })
 
   
