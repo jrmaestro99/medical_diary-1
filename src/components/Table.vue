@@ -40,7 +40,7 @@ export default {
   mounted() {
       const auth = getAuth();
       this.user = auth.currentUser.email;
-      this.showReminder();
+      let key = String(this.user) + '.medicine';
 
       async function display(user) {
       let z = await getDocs(collection(db, user))
@@ -50,6 +50,7 @@ export default {
             tb.deleteRow(1)
         }
         z.forEach((docs) => {
+          
           let yy = docs.data();
           //try using await or then
           var table = document.getElementById("table");
@@ -139,10 +140,8 @@ export default {
           cell6.appendChild(editButton);
           index += 1;
         })
-        tb.deleteRow(1)
-        tb.deleteRow(1)
       }
-      display(String(this.user))
+      display(key)
 
       async function delReminder(reminder, user) {
         await deleteDoc(doc(db, user, reminder))
@@ -151,7 +150,7 @@ export default {
         while (table.rows.length > 1){
           table.deleteRow(1)
         }
-        display(user)
+        display(key)
         }
       
       async function confirmDelete(reminder, user) {
@@ -163,29 +162,38 @@ export default {
 
     async function editReminder(medName, medFunction, medDosage, cell1, cell2, cell3, cell6) {
       const auth = getAuth();
-      const user = auth.currentUser.email;      
+      const user = auth.currentUser.email;   
+      let key = user + '.medicine'   
       //getting all the previous data in the fields
       var medNameData = medName;
-      //medNameData.id = "mednametodelete"
       var medFunctionData = medFunction;
       var medDosageData = medDosage;
       //deleting original entry in preparation of creating new one
-      deleteDoc(doc(db, user, medNameData));
+      deleteDoc(doc(db, key, medNameData));
       //creating new fields
       var newMedName = document.createElement("input");
       newMedName.value = medNameData;
       newMedName.id = "newmedname";
-      //newMedName.width = 20;
+      var styleMedName = document.createElement('style');
+          styleMedName.type = 'text/css';
+          styleMedName.innerHTML = '#newmedname { width: 120px; }'
+          document.head.appendChild(styleMedName);
 
       var newMedFunction = document.createElement("input");
       newMedFunction.value = medFunctionData;
       newMedFunction.id = "newmedfunction";
-      //newMedFunction.width = 20;
+      var styleMedFunction = document.createElement('style');
+          styleMedFunction.type = 'text/css';
+          styleMedFunction.innerHTML = '#newmedfunction { width: 120px; }'
+          document.head.appendChild(styleMedFunction);
 
       var newMedDosage = document.createElement("input");
       newMedDosage.value = medDosageData;
       newMedDosage.id = "newmeddosage";
-      //newMedDosage.width = 10;
+      var styleMedDosage = document.createElement('style');
+          styleMedDosage.type = 'text/css';
+          styleMedDosage.innerHTML = '#newmeddosage { width: 120px; }'
+          document.head.appendChild(styleMedDosage);
       //delete old cell1, cell2 and cell3 
       cell1.innerHTML = "";
       cell2.innerHTML = "";
@@ -228,15 +236,14 @@ export default {
     }
 
     async function savechanges() {
-      const auth = getAuth();
-      const user = auth.currentUser.email;
+      console.log(key)
         var newMedName=document.getElementById("newmedname").value;
         var newMedDosage=document.getElementById("newmeddosage").value;  
         var newMedFunction=document.getElementById("newmedfunction").value;
         alert("Saving your reminder");
 
         try{
-          const docRef = await setDoc(doc(db, user, newMedName),{
+          const docRef = await setDoc(doc(db, key, newMedName),{
           Function:newMedFunction, Dosage: newMedDosage, "MedicineName": newMedName,
           })
           console.log(docRef)
@@ -244,14 +251,10 @@ export default {
           catch(error) {
             console.error("Error adding document: ", error);
           }
-        display(user);
+        display(key);
     }
     },
-    methods : {
-      async showReminder() {
-        alert("Have you taken your medicine?")
-      }
-    }
+
 
 }
 
