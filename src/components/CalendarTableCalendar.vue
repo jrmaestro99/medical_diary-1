@@ -197,8 +197,6 @@ export default {
     created() {
       //this.getEvents() ;
     },
-
-    
   
 }
 
