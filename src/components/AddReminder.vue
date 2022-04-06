@@ -41,13 +41,14 @@ export default {
         async savetofs() {
             const auth = getAuth();
             this.user = auth.currentUser.email;
+            let key = String(this.user) + '.medicine'
                 var medName=document.getElementById("medname").value;
                 var medDosage=document.getElementById("meddosage").value;  
                 var medFunction=document.getElementById("medfunction").value;
                 alert("Saving your reminder");
 
                 try{
-                const docRef = await setDoc(doc(db, String(this.user), medName),{
+                const docRef = await setDoc(doc(db, key, medName),{
                 Function:medFunction, Dosage: medDosage, "MedicineName": medName,
                 })
                 document.getElementById('myform').reset();
