@@ -41,11 +41,8 @@ export default {
       const auth = getAuth();
       this.user = auth.currentUser.email;
       let key = String(this.user) + '.medicine';
-      this.showReminder();
 
       async function display(user) {
-      //let z = await getDocs(collection(db, user))
-      
       let z = await getDocs(collection(db, user))
         let index = 1;
         let tb = document.getElementById("table");
@@ -143,11 +140,8 @@ export default {
           cell6.appendChild(editButton);
           index += 1;
         })
-        // tb.deleteRow(1)
-        // tb.deleteRow(1)
       }
       display(key)
-
 
       async function delReminder(reminder, user) {
         await deleteDoc(doc(db, user, reminder))
@@ -156,7 +150,6 @@ export default {
         while (table.rows.length > 1){
           table.deleteRow(1)
         }
-        console.log()
         display(key)
         }
       
@@ -173,7 +166,6 @@ export default {
       let key = user + '.medicine'   
       //getting all the previous data in the fields
       var medNameData = medName;
-      //medNameData.id = "mednametodelete"
       var medFunctionData = medFunction;
       var medDosageData = medDosage;
       //deleting original entry in preparation of creating new one
@@ -182,17 +174,26 @@ export default {
       var newMedName = document.createElement("input");
       newMedName.value = medNameData;
       newMedName.id = "newmedname";
-      //newMedName.width = 20;
+      var styleMedName = document.createElement('style');
+          styleMedName.type = 'text/css';
+          styleMedName.innerHTML = '#newmedname { width: 120px; }'
+          document.head.appendChild(styleMedName);
 
       var newMedFunction = document.createElement("input");
       newMedFunction.value = medFunctionData;
       newMedFunction.id = "newmedfunction";
-      //newMedFunction.width = 20;
+      var styleMedFunction = document.createElement('style');
+          styleMedFunction.type = 'text/css';
+          styleMedFunction.innerHTML = '#newmedfunction { width: 120px; }'
+          document.head.appendChild(styleMedFunction);
 
       var newMedDosage = document.createElement("input");
       newMedDosage.value = medDosageData;
       newMedDosage.id = "newmeddosage";
-      //newMedDosage.width = 10;
+      var styleMedDosage = document.createElement('style');
+          styleMedDosage.type = 'text/css';
+          styleMedDosage.innerHTML = '#newmeddosage { width: 120px; }'
+          document.head.appendChild(styleMedDosage);
       //delete old cell1, cell2 and cell3 
       cell1.innerHTML = "";
       cell2.innerHTML = "";
@@ -253,11 +254,7 @@ export default {
         display(key);
     }
     },
-    methods : {
-      async showReminder() {
-        alert("Have you taken your medicine?")
-      }
-    }
+
 
 }
 

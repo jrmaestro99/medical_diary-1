@@ -36,8 +36,15 @@ export default {
             medName:"", medDosage:"", medFunction:""
         }
     },
+    mounted() {
+        this.showReminder()
+    },
 
     methods : {
+        showReminder() {
+            alert("Have you taken your medicine?")
+        },
+
         async savetofs() {
             const auth = getAuth();
             this.user = auth.currentUser.email;
