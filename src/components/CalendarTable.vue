@@ -6,7 +6,8 @@
 import { getAuth, onAuthStateChanged} from "firebase/auth";
   export default {
     beforeMount() {
-    const auth = getAuth();      
+    const auth = getAuth();
+    this.username = auth.currentUser.displayName;
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.username = auth.currentUser.displayName;
