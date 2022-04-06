@@ -116,11 +116,12 @@ export default {
           end: this.selectInfo.endStr,
           allDay: this.selectInfo.allDay
         })
+        alert("Event Added to Calendar!")
       }
 
       var modalBg = document.querySelector(".modal-bg")
       modalBg.classList.remove("bg-active")
-      alert("Event Added to Calendar!")
+      
       modalBg.classList.remove("bg-active")
         document.getElementById("calendar").style.visibility = "visible"
     },
@@ -166,7 +167,7 @@ export default {
         document.getElementById("calendar").style.visibility = "hidden"
       }
       displayModal()
-      window.scrollTo(0, 0);
+      
       var modalClose = document.querySelector(".modal-close")
       modalClose.addEventListener("click", function () {
         modalBg.classList.remove("bg-active")
@@ -245,6 +246,10 @@ export default {
   font-family: "Montserrat", sans-serif;
   cursor : pointer
 }
+.modal-close:hover {
+  cursor : pointer;
+  color : red;
+}
 .modal-close {
   position : absolute;
   top : 10px;
@@ -263,5 +268,13 @@ white-space: normal;
 }
 .fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
   display : none
+}
+button:hover{
+  background-color:orange;
+  transition : 0.25s
+  }
+button:active {
+    vertical-align: top;
+    padding: 8px 13px 6px;
 }
 </style>
