@@ -1,11 +1,9 @@
 <template>
     <div class = "container">
-        <h1 id = "mainheader">Medical Diary</h1>
         <form id="myform">
-            <h2 id ="header">your notes</h2>
             <div class = "formli" id="form">
-                <input type="text" id="title" placeholder="add title"><br>
-                <textarea type="text" id="content" placeholder="add description"></textarea> <br>
+                <input type="text" id="title" placeholder="add title" v-model ="a"><br>
+                <textarea type="text" id="content" placeholder="add description" v-model="b"></textarea> <br>
                 <div class="save">
                     <button id="savebutton" type="button" @click="savetofs()">add note</button>
                 </div>
@@ -24,24 +22,25 @@ import {getAuth} from "firebase/auth";
 const db = getFirestore(firebaseApp);
 
 export default {
-    // data() {
-    //     return{
-    //         title:"", 
-    //         content:"",  
-    //         fbuser:""
-    //     }
-    // },
+    data() {
+        return{
+            a:"", 
+            b:"",  
+            user:""
+        }
+    },
     methods: {
         async savetofs() {
             const auth = getAuth();
             this.user = auth.currentUser.email;
-            var a = document.getElementById("title").value
-            var b = document.getElementById("content").value
+            // var a = document.getElementById("title").value
+            // var b = document.getElementById("content").value
             var c = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
             var d = new Date()
             try{
-                const docRef = await setDoc(doc(db, String(this.user), a), {
-                title: a, content: b, dateandtime: c, timeStamp: d
+                var notecollection  = String(this.user)+'.notes';
+                const docRef = await setDoc(doc(db, notecollection, this.a), {
+                title: this.a, content: this.b, dateandtime: c, timeStamp: d
                 })
                 console.log(docRef)
                 document.getElementById("myform").reset();
@@ -62,21 +61,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-#mainheader {
-    font-family:serif ;
-  text-align: center;
-  font-weight: 500;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-}
-#header {
-  font-family:serif ;
-  text-align: center;
-  font-weight: 400;
-  font-size: 32px;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
+  
 }
 
 #title{
@@ -87,7 +72,7 @@ export default {
   outline: none;
   border: 2px solid #000;
   font-size: 18px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Noto Sans';
   border-bottom-color: rgb(202, 202, 202);
 }
 #content{
@@ -98,8 +83,9 @@ export default {
   outline: none;
   border: 2px solid #000;
   font-size: 18px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Noto Sans';
   border-top-style:none;
+  
 }
 
 #savebutton {
@@ -112,8 +98,7 @@ export default {
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;

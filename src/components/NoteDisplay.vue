@@ -13,9 +13,10 @@ const db = getFirestore(firebaseApp);
 
 export default { 
     mounted() {
-        const auth = getAuth();
-        this.user = auth.currentUser.email;
-        async function display(user){
+        
+        async function display(){
+            const auth = getAuth();
+            var user = auth.currentUser.email;
             function getRandomColor() {
 
             return 'rgba(' +
@@ -24,7 +25,8 @@ export default {
             (Math.floor(Math.random() * 56) + 200) +
             ',.2)';
             }
-            let z = await getDocs(collection(db, user),orderBy("timeStamp"))//not sorted by timestamp
+            let notecol = String(user) + '.notes'
+            let z = await getDocs(collection(db, notecol),orderBy("timeStamp"))//not sorted by timestamp
             //  let z = await db.collection("Notes").get()
             var currentDiv = document.getElementById("div1");
             z.forEach((docs)=> {
@@ -68,14 +70,15 @@ export default {
                 
             });
         }
-    display(String(this.user))
+    display(String(this.user)+'.notes')
 
     async function updateNote(note, division) {
       const auth = getAuth();
-      const user = auth.currentUser.email;    
-      var z = note;
+      var user = auth.currentUser.email;    
+      var z = note
       var zz = division
-      await deleteDoc(doc(db,user,z))
+      let notecol = String(user) + '.notes'
+      await deleteDoc(doc(db,notecol,z))
       var con = document.createElement("container")
       con.id = "con"
       var newNotetitle = document.createElement("input");
@@ -87,24 +90,36 @@ export default {
       var savebtn = document.createElement("button");
       savebtn.textContent="Save"
       savebtn.id = "savebtn"
+      var cancelbtn = document.createElement("button");
+      cancelbtn.textContent="Cancel"
+      cancelbtn.id = "cancelbtn"
       zz.innerHTML = "";
       con.appendChild(newNotetitle)
       con.appendChild(newNotecontent)
       con.appendChild(savebtn)
+      con.appendChild(cancelbtn)
       zz.appendChild(con)
       savebtn.onclick = function() {
           savetodb()
-          window.location.reload();
+          this.$emit("added")//not being emitted
+      }
+      cancelbtn.onclick = function() {
+          savetodb2(z)
+          this.$emit("added")// not being emitted
       }
     }
 
-    async function savetodb(user) {
+    async function savetodb() {
+        const auth = getAuth();
+        var user = auth.currentUser.email; 
         var a = document.getElementById("newnotetitle").value
         var b = document.getElementById("newnotecontent").value
         var c = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
         var d = new Date()
+        
         try{
-                const docRef = await setDoc(doc(db, user, a), {
+                let notecol = String(user) + '.notes'
+                const docRef = await setDoc(doc(db, notecol, a), {
                 title: a, content: b, dateandtime: c, timeStamp: d
                 })
                 console.log(docRef)
@@ -115,14 +130,36 @@ export default {
             }
       }
 
-    async function deleteNote(note,user) {
-        // const auth = getAuth();
-        // var user = auth.currentUser.email;
-        var z = note;
+      async function savetodb2(note) {
+        const auth = getAuth();
+        var user = auth.currentUser.email;
         
-        await deleteDoc(doc(db,user,z))
+        var a = note.title
+        var b = note.content
+        var c = note.dateandtime
+        var d = note.timeStamp
+        
+        try{
+                let notecol = String(user) + '.notes'
+                const docRef = await setDoc(doc(db, notecol, a), {
+                title: a, content: b, dateandtime: c, timeStamp: d
+                })
+                console.log(docRef)
+                this.$emit("added")
+            }
+        catch(error) {
+                console.error("Error adding note", error);
+            }
+      }
+
+    async function deleteNote(note) {
+        const auth = getAuth();
+        var user = auth.currentUser.email;
+        var z = note;
+        let notecol = String(user) + '.notes'
+        await deleteDoc(doc(db,notecol,z))
         document.getElementById("div1").innerHTML = "";
-        display(String(user));
+        display();
     }
 
     },
@@ -143,7 +180,7 @@ export default {
   width: 60%;
   left: 0;
   top: 0;
-  font-family:"Montserrat", sans-serif;
+  font-family: 'Noto Sans';
   font-size: 25px;
   height: auto;
   margin-bottom: 15px;
@@ -153,7 +190,7 @@ export default {
 }
 #date{
     margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Noto Sans';
   font-size: 18px;
   color: rgba(0, 0, 0, 0.5);
   position:absolute;
@@ -216,7 +253,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
+  
 }
 #newnotetitle {
   padding: 0 10px;
@@ -225,8 +262,9 @@ export default {
   outline: none;
   border: 2px solid #000;
   font-size: 18px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Noto Sans';
   border-bottom-color:rgb(202, 202, 202) ;
+  
   
 }
 
@@ -238,8 +276,9 @@ export default {
   outline: none;
   border: 2px solid #000;
   font-size: 18px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Noto Sans';
   border-top-style:none;
+  text-align: left;
   
 }
 #savebtn {
@@ -252,7 +291,7 @@ export default {
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: block;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
@@ -283,6 +322,53 @@ export default {
 }
 
 #savebtn:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+#cancelbtn {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: block;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 5px auto;
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 70px;
+  height:30px;
+  text-align: center;
+
+  
+}
+#cancelbtn:hover,
+#cancelbtn:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+#cancelbtn:hover {
+  transform: translateY(-1px);
+}
+
+#cancelbtn:active {
   background-color: #F0F0F1;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
