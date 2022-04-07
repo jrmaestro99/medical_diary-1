@@ -2,13 +2,12 @@
   <h1> </h1>
   <FullCalendar id = "calendar" :options="calendarOptions" :events="events" />
   
-  
   <div class = "modal-bg">
     <div class = "modal">
     <h2>Please input event details</h2>
-    <label for = "eventName">Name of Medical Appointment: </label>
+    <label for = "eventName"><b>Name of Medical Appointment: </b></label>
     <input type = "text" id = "eventName" required><br><br>
-    <label for="time">Time of Medical Appointment:</label>
+    <label for="time"><b>Time of Medical Appointment: </b></label>
     <input type="time" id="time" required>
     <br><br>
     <button @click ="submitAddEvent"> Save Event </button >
@@ -201,13 +200,12 @@ export default {
     
   
 }
-
-
-
 </script>
 
 
 <style>
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
+
 .modal-bg{
   position : fixed;
   width : 100%;
@@ -224,38 +222,85 @@ export default {
 }
 .modal {
   position : relative;
-  font-family: "Montserrat", sans-serif;
-  background-color: white;
+  border-radius: 10px;
+  font-family: "Noto Sans", sans-serif;
+  background-color: #22272e;
+  padding: 2rem;
   width : 30%;
-  height : 40%;
   display : flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
 }
+
+
+.modal * {
+  margin: 0.5rem;
+}
+
 .bg-active {
   visibility : visible;
   opacity : 1;
 }
 
 .modal button {
-  padding : 10px 30px;
-  background-color : #2980b9;
-  color : white;
-  border :none;
-  font-family: "Montserrat", sans-serif;
-  cursor : pointer
+  background-color: #373E47;
+  border-radius: 5px;
+  font-family: 'Noto Sans';
+  padding: 0.5rem;
+  margin-top: 1.2rem;
+  color:#ADBAC7;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border: 1px solid #444c56;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: -1rem;
 }
 .modal-close:hover {
   cursor : pointer;
-  color : red;
+  color : #EC775C;
 }
 .modal-close {
+  margin: 0.5rem;
   position : absolute;
   top : 10px;
   right : 10px;
   font-weight: bold;
   cursor : pointer;
+}
+
+.fc-button-primary:active {
+  box-shadow: 0 0 0 1px rgb(76 91 106 / 50%);
+}
+
+.fc-button-primary:focus {
+  box-shadow: none !important;
+}
+
+.fc-button-active {
+  border: 1px solid #444c56 !important;
+}
+
+.fc-daygrid-day-frame:hover {
+  background-color: #2C3E50;
+}
+
+.fc-button {
+  color: #ADBAC7;
+  font-family: 'Noto Sans';
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+}
+
+.fc-button:not(:last-child) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .fc-event-time, .fc-event-title {
@@ -269,12 +314,13 @@ white-space: normal;
 .fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
   display : none
 }
-button:hover{
+
+.modal button:hover{
   background-color:orange;
   transition : 0.25s
   }
-button:active {
+.modal button:active {
     vertical-align: top;
-    padding: 8px 13px 6px;
+    /* padding: 8px 13px 6px; */
 }
 </style>
