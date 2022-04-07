@@ -42,7 +42,7 @@ export default {
 
     methods : {
         showReminder() {
-            alert("Have you taken your medicine?")
+            alert("Have you taken your medicine today?")
         },
 
         async savetofs() {
@@ -56,7 +56,7 @@ export default {
 
                 try{
                 const docRef = await setDoc(doc(db, key, medName),{
-                Function:medFunction, Dosage: medDosage, "MedicineName": medName,
+                Function:medFunction, Dosage: medDosage, MedicineName: medName, Taken: false
                 })
                 document.getElementById('myform').reset();
                 console.log(docRef)
