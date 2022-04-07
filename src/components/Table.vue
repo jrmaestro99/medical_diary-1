@@ -69,6 +69,7 @@ export default {
           var medName = (yy.MedicineName);
           var medFunction = (yy.Function);
           var medDosage = (yy.Dosage);
+          var medTaken = (yy.Taken);
           var cell1 = row.insertCell(0); var cell2 = row.insertCell(1); var cell3 = row.insertCell(2);
           var cell4 = row.insertCell(3); 
           cell1.innerHTML = medName;
@@ -78,6 +79,23 @@ export default {
           var checkBox = document.createElement("input");
           checkBox.type = "checkbox";
           checkBox.id = "checkBox";
+          if (medTaken == true) {
+            checkBox.checked = true;
+            checkBox.onclick = function() {
+              deleteDoc(doc(db, key, medName));
+              setDoc(doc(db, key, medName),{
+                Function:medFunction, Dosage: medDosage, MedicineName: medName, Taken: false
+              })
+            }
+          } else {
+            checkBox.checked = false;
+            checkBox.onclick = function() {
+              deleteDoc(doc(db, key, medName));
+              setDoc(doc(db, key, medName),{
+                Function:medFunction, Dosage: medDosage, MedicineName: medName, Taken: true
+              })
+            }
+          }
           cell4.appendChild(checkBox);
           //creating delete button for each reminder
           var cell5 = row.insertCell(4);
