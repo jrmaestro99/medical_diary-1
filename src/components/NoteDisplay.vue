@@ -101,7 +101,7 @@ export default {
       zz.appendChild(con)
       savebtn.onclick = function() {
           savetodb()
-          this.$emit("added")//not being emitted
+          location.reload();
       }
       cancelbtn.onclick = function() {
           savetodb2(z)

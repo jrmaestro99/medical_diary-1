@@ -3,7 +3,7 @@
         <form id="myform">
             <div class = "formli" id="form">
                 <input type="text" id="title" placeholder="add title" v-model ="a"><br>
-                <textarea type="text" id="content" placeholder="add description" v-model="b"></textarea> <br>
+                <textarea placeholder="add description" type="text" id="content" autocomplete="off" v-model="b"></textarea>
                 <div class="save">
                     <button id="savebutton" type="button" @click="savetofs()">add note</button>
                 </div>
@@ -85,6 +85,7 @@ export default {
   font-size: 18px;
   font-family: 'Noto Sans';
   border-top-style:none;
+  text-align: left;
   
 }
 
@@ -102,7 +103,8 @@ export default {
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
-  margin: 0;
+  margin: 0 ;
+  
   min-height: 3rem;
   padding: calc(.875rem - 1px) calc(1.5rem - 1px);
   position: relative;
