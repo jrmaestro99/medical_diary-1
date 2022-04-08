@@ -56,6 +56,7 @@ export default {
   border-top-right-radius: 10px; */
   font-weight: bold;
   margin: auto;
+  max-height: 82.4px;
 }
 
 #nav a:hover {
