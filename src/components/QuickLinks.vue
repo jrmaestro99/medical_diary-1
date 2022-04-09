@@ -20,8 +20,8 @@
             <p>Consult an online doctor</p>
             <!-- <a href="https://doctoranywhere.com" target="_blank" rel="noopener noreferrer" class="button">Click here</a> -->
         </div>
-        <div class="card" @click="open($event, 'https://e-station2.axs.com.sg/AXSOnline/core_adhoc/healthcare.php')">
-            <div class="card-image axs" @click="open"></div>
+        <div class="card" @click="open($event, 'https://www.axs.com.sg/axsStation.php')">
+            <div class="card-image axs"></div>
             <h2>AXS Payment</h2>
             <p>Make payment for your healthcare bills</p>
             <!-- <a href="https://e-station2.axs.com.sg/AXSOnline/core_adhoc/healthcare.php" target="_blank" rel="noopener noreferrer" class="button">Click here</a> -->
@@ -59,9 +59,7 @@ export default {
     name: 'QuickLinks',
     methods: {
         open(event, link) {
-            let yourWindow = window.open();
-            yourWindow.opener = null;
-            yourWindow.location = link;
+            window.open(link, '_blank');
         }
     }
 }
