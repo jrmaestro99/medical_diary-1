@@ -38,11 +38,11 @@ const routes = [
         name: "Landing",
         component: Landing
     },
-    // {
-    //     path: "/login",
-    //     name: "Login",
-    //     component: Login
-    // },
+    {
+        path: "/login",
+        name: "Login",
+        component: Login
+    },
     {
         path: "/about",
         name: "About",
