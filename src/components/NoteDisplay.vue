@@ -35,6 +35,7 @@ export default {
                 var title1=(yy.title)
                 var content1=yy.content
                 var date1=yy.dateandtime
+                var timestamp1 = yy.timeStamp
                 var newDiv = document.createElement("div");
                 newDiv.id= "newdiv";
                 newDiv.style.backgroundColor=getRandomColor();
@@ -64,7 +65,7 @@ export default {
                 editbtn.title="Edit"
                 editbtn.id="ebtn"
                 editbtn.onclick = function() {
-                  updateNote(title1, newDiv)
+                  updateNote(title1, content1, date1, timestamp1, newDiv)
                 }
                 newDiv.appendChild(editbtn)
                 currentDiv.insertBefore(newDiv,currentDiv.firstChild);
@@ -73,10 +74,13 @@ export default {
         }
     display(String(this.user)+'.notes')
 
-    async function updateNote(note, division) {
+    async function updateNote(note, content, date, timestamp, division) {
       const auth = getAuth();
       var user = auth.currentUser.email;    
       var z = note
+      var a = content
+      var b = date
+      var c = timestamp
       var zz = division
       let notecol = String(user) + '.notes'
       await deleteDoc(doc(db,notecol,z))
@@ -101,13 +105,10 @@ export default {
       con.appendChild(cancelbtn)
       zz.appendChild(con)
       savebtn.onclick = function() {
-          savetodb();
-          
-          
+          savetodb();     
       }
       cancelbtn.onclick = function() {
-          savetodb2(z)
-          this.$emit("added")// not being emitted
+        savetodb2(z, a, b, c);
       }
     }
 
@@ -135,15 +136,9 @@ export default {
         display();
       }
 
-      async function savetodb2(note) {
+      async function savetodb2(a, b ,c, d) {
         const auth = getAuth();
         var user = auth.currentUser.email;
-        
-        var a = note.title
-        var b = note.content
-        var c = note.dateandtime
-        var d = note.timeStamp
-        
         try{
                 let notecol = String(user) + '.notes'
                 const docRef = await setDoc(doc(db, notecol, a), {
@@ -154,6 +149,7 @@ export default {
         catch(error) {
                 console.error("Error adding note", error);
             }
+        document.getElementById("div1").innerHTML="";
         display()   
       }
 
