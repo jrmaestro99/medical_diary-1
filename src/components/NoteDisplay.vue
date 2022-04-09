@@ -192,7 +192,7 @@ export default {
     margin: 0;
   font-family: 'Noto Sans';
   font-size: 18px;
-  color: rgba(0, 0, 0, 0.5);
+  
   position:absolute;
     bottom:0;
     right:0;
@@ -282,39 +282,38 @@ export default {
   
 }
 #savebtn {
+ 
   align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
   display: block;
+  background-color: #373E47;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color:#ADBAC7;
+  border: 1px solid #444c56;
   font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  font-size: 16px;
-  font-weight: 600;
   justify-content: center;
-  line-height: 1.25;
-  margin: 0 auto;
+  font-weight: 600;
+  line-height: 0.25rem;
   position: relative;
-  text-decoration: none;
-  transition: all 250ms;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  vertical-align: baseline;
   width: 70px;
-  height:30px;
-  text-align: center;
+  height:30px
 
-  
 }
 #savebtn:hover,
 #savebtn:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
+  color: white;
 }
 
 #savebtn:hover {
@@ -322,7 +321,7 @@ export default {
 }
 
 #savebtn:active {
-  background-color: #F0F0F1;
+  background-color: rgba(0, 0, 0, 0.06);
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
@@ -330,30 +329,29 @@ export default {
 }
 #cancelbtn {
   align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
   display: block;
+  background-color: #373E47;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color:#ADBAC7;
+  border: 1px solid #444c56;
   font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  font-size: 16px;
-  font-weight: 600;
   justify-content: center;
-  line-height: 1.25;
-  margin: 5px auto;
+  font-weight: 600;
+  line-height: 0.25rem;
   position: relative;
-  text-decoration: none;
-  transition: all 250ms;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  vertical-align: baseline;
   width: 70px;
-  height:30px;
-  text-align: center;
+  height:30px
 
   
 }
@@ -361,7 +359,7 @@ export default {
 #cancelbtn:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
+  color: white;
 }
 
 #cancelbtn:hover {
@@ -369,7 +367,7 @@ export default {
 }
 
 #cancelbtn:active {
-  background-color: #F0F0F1;
+  background-color:rgba(0, 0, 0, 0.06);
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
