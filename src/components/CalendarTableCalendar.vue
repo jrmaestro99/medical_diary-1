@@ -202,8 +202,6 @@ export default {
 
 
 <style>
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
-
 .modal-bg{
   position : fixed;
   width : 100%;
@@ -221,7 +219,6 @@ export default {
 .modal {
   position : relative;
   border-radius: 10px;
-  font-family: "Noto Sans", sans-serif;
   background-color: #22272e;
   padding: 2rem;
   width : 30%;
@@ -244,7 +241,6 @@ export default {
 .modal button {
   background-color: #373E47;
   border-radius: 5px;
-  font-family: 'Noto Sans';
   padding: 0.5rem;
   margin-top: 1.2rem;
   color:#ADBAC7;
@@ -287,7 +283,6 @@ export default {
 
 .fc-button {
   color: #ADBAC7;
-  font-family: 'Noto Sans';
   border-top-right-radius: 5px !important;
   border-bottom-right-radius: 5px !important;
   border-top-left-radius: 5px !important;

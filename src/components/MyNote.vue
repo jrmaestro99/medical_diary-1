@@ -83,7 +83,7 @@ export default {
   outline: none;
   border: 2px solid #000;
   font-size: 18px;
-  font-family: 'Noto Sans';
+  /* font-family: 'Noto Sans'; */
   border-bottom-color: rgb(202, 202, 202);
   font-weight: bold;
 }
@@ -95,7 +95,7 @@ export default {
   outline: none;
   border: 2px solid #000;
   font-size: 18px;
-  font-family: 'Noto Sans';
+  /* font-family: 'Noto Sans'; */
   border-top-style:none;
   text-align: left;
   color: #000;
@@ -104,48 +104,25 @@ export default {
 }
 
 #savebutton {
- 
-  display: inline-block;
-  background-color: #373E47;
-  border: 1px solid rgb(209,213,219);
-  border-radius: .5rem;
-  box-sizing: border-box;
-  color:#ADBAC7;
-  border: 1px solid #444c56;
-  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  font-size: .875rem;
-  font-weight: 600;
-  line-height: 0.25rem;
-  padding: 1rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  margin: 2rem;
-  text-align: center;
-  text-decoration: none #D1D5DB solid;
-  text-decoration-thickness: auto;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+    background-color: #373E47;
+    border-radius: 5px;
+    /* font-family: 'Noto Sans'; */
+    padding: 0.5rem;
+    margin: 1.5rem;
+    color:#ADBAC7;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border: 1px solid #444c56;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
-#savebutton:hover,
-#savebutton:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: white;
+#savebutton:hover {
+  background-color: #444c56;
 }
 
 #savebutton:hover {
   transform: translateY(-1px);
-}
-
-#savebutton:active {
-  background-color: rgb(202, 202, 202);
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-  color: rgba(0, 0, 0, 0.65);
-  transform: translateY(0);
 }
 </style>

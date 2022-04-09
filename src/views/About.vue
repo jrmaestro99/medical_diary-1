@@ -46,11 +46,6 @@ export default {
 </script>
 
 <style>
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);
-
-* {
-    font-family: 'Lato';
-}
 
 body {
   width: 60%;
