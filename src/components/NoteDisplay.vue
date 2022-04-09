@@ -27,8 +27,7 @@ export default {
             ',.2)';
             }
             let notecol = String(user) + '.notes'
-            let z = await getDocs(query(collection(db, notecol),orderBy("timeStamp")))//not sorted by timestamp
-            //  let z = await db.collection("Notes").get()
+            let z = await getDocs(query(collection(db, notecol),orderBy("timeStamp")))
             var currentDiv = document.getElementById("div1");
             z.forEach((docs)=> {
                 let yy = docs.data()
