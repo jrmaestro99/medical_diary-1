@@ -111,7 +111,7 @@ export default {
     methods:{
         async savetofb(event, doc, value, message) {
 
-            let isExecuted = confirm("Do You Want To Save Today's " + message + " To Firebase?");
+            let isExecuted = confirm("Do you want to save today's " + message + "?");
  
             if (isExecuted) {
                 try {
@@ -131,7 +131,7 @@ export default {
         },
 
         async save(event, bpdoc, wgdoc, bpvalue, wgvalue) {
-            let isExecuted = confirm("Do You Want To Save Today's Blood Pressure and Weight To Firebase?");
+            let isExecuted = confirm("Do you want to save today's blood pressure & weight?");
  
             if (isExecuted) {
                 try {
