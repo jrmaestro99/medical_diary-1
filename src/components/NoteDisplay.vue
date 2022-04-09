@@ -229,6 +229,7 @@ export default {
 }
 #ebtn{
   background:url(../assets/edit-button-svgrepo-com.svg) no-repeat;
+  background-size: 14px;
   height:16px;
   width:16px;
   border: none;
@@ -238,31 +239,28 @@ export default {
   margin-top:7px;
   margin-right: 35px;
   transition: background-color 0.5s;
-
 }
 
 #ebtn:hover{
-  background-color:rgb(255, 248, 248);
-  opacity: 0.6;
+  background-color:rgba(211, 211, 211, 0.5);
 }
 
-#ebtnfade:focus,
+/* #ebtnfade:focus,
 #ebtnfade:active {
   background-color:green;
   transition: none;
-}
+} */
 
 
 #btn:hover {
-  background-color:red;
-  opacity:0.5;
+  background-color:rgba(255, 0, 0, 0.5);
 }
 
-#btnfade:focus,
+/* #btnfade:focus,
 #btnfade:active {
   background-color: red;
   transition: none;
-}
+} */
 
 #con {
   width: 100%;
@@ -309,13 +307,13 @@ export default {
   border-radius: .5rem;
   box-sizing: border-box;
   color:#ADBAC7;
-  border: 1px solid #444c56;
+  border: 1px solid #4f5762;
   /* font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
   justify-content: center;
   font-weight: 600;
   line-height: 0.25rem;
   position: relative;
-  margin: 0 auto;
+  margin: 0.5rem auto;
   text-align: center;
   text-decoration: none #D1D5DB solid;
   text-decoration-thickness: auto;
@@ -330,25 +328,20 @@ export default {
 }
 #savebtn:hover,
 #savebtn:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: white;
-
-  
+  background-color: #444c56;
 }
 
 #savebtn:hover {
   transform: translateY(-1px);
 }
 
-#savebtn:active {
+/* #savebtn:active {
   background-color: rgb(202, 202, 202);
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
-  opacity: 0.5;
-}
+} */
 #cancelbtn {
   align-items: center;
   display: block;
@@ -357,7 +350,7 @@ export default {
   border-radius: .5rem;
   box-sizing: border-box;
   color:#ADBAC7;
-  border: 1px solid #444c56;
+  border: 1px solid #4f5762;
   /* font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
   justify-content: center;
   font-weight: 600;
@@ -379,22 +372,20 @@ export default {
 }
 #cancelbtn:hover,
 #cancelbtn:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: white;
+  background-color: #444c56;
 }
 
 #cancelbtn:hover {
   transform: translateY(-1px);
 }
 
-#cancelbtn:active {
+/* #cancelbtn:active {
   background-color:rgb(202, 202, 202);
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
-}
+} */
 
 </style>
 
