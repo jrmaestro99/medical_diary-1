@@ -72,10 +72,6 @@ export default {
 </script>
 
 <style scoped>
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
-* {
-    font-family: 'Noto Sans';
-}
 
 .container {
     margin-right: 50px;
@@ -106,7 +102,7 @@ input{
   box-sizing: border-box;
   color:#ADBAC7;
   border: 1px solid #444c56;
-  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  /* font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
   font-size: .875rem;
   font-weight: 600;
   line-height: 0.25rem;

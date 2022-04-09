@@ -54,7 +54,6 @@ export default {
 </script>
 
 <style scoped>
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
 
 #firebaseui-auth-container{
   margin-top: 50px;;
@@ -71,7 +70,7 @@ export default {
     font-weight: bolder;
     text-align: center;
     /* font-style: italic; */
-    font-family: 'Noto Sans';
+    /* font-family: 'Noto Sans'; */
     color:#E5C6B3;
     font-size: 0.8rem;
     
@@ -79,7 +78,7 @@ export default {
 
 #mainHead{
     text-align: center;
-    font-family: 'Noto Sans';
+    /* font-family: 'Noto Sans'; */
     color:#E5C6B3;
     cursor: pointer;
 }

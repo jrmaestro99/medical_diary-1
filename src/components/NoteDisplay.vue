@@ -29,6 +29,7 @@ export default {
             let notecol = String(user) + '.notes'
             let z = await getDocs(query(collection(db, notecol),orderBy("timeStamp")))
             var currentDiv = document.getElementById("div1");
+
             z.forEach((docs)=> {
                 let yy = docs.data()
                 var title1=(yy.title)
@@ -174,6 +175,7 @@ export default {
 </script>
 
 <style>
+
 #newdiv{
   opacity: 1;
   display: flex;
@@ -186,7 +188,7 @@ export default {
   width: 60%;
   left: 0;
   top: 0;
-  font-family: 'Noto Sans';
+  /* font-family: 'Noto Sans'; */
   font-size: 20px;
   height: auto;
   margin-bottom: 15px;
@@ -196,7 +198,7 @@ export default {
 }
 #date{
     margin: 0;
-  font-family: 'Noto Sans';
+  /* font-family: 'Noto Sans'; */
   font-size: 18px;
   
   position:absolute;
@@ -212,7 +214,7 @@ export default {
   text-decoration: underline;
 }
 #btn{
-    background:url(../assets/close-button.png);
+    background:url(../assets/xmark-small-svgrepo-com.svg) no-repeat;
     height:16px;
     width: 16px;
     border: none;
@@ -226,7 +228,7 @@ export default {
     
 }
 #ebtn{
-  background: url(../assets/pencil.png);
+  background:url(../assets/edit-button-svgrepo-com.svg) no-repeat;
   height:16px;
   width:16px;
   border: none;
@@ -242,6 +244,7 @@ export default {
 #ebtn:hover{
   background-color:lightgray;
 }
+
 #ebtnfade:focus,
 #ebtnfade:active {
   background-color:green;
@@ -275,7 +278,7 @@ export default {
   border: 2px solid #000;
   font-weight: bold;
   font-size: 18px;
-  font-family: 'Noto Sans';
+  /* font-family: 'Noto Sans'; */
   border-bottom-color:rgb(202, 202, 202) ;
   
   
@@ -289,7 +292,7 @@ export default {
   outline: none;
   border: 2px solid #000;
   font-size: 18px;
-  font-family: 'Noto Sans';
+  /* font-family: 'Noto Sans'; */
   border-top-style:none;
   text-align: left;
   
@@ -305,7 +308,7 @@ export default {
   box-sizing: border-box;
   color:#ADBAC7;
   border: 1px solid #444c56;
-  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  /* font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
   justify-content: center;
   font-weight: 600;
   line-height: 0.25rem;
@@ -350,7 +353,7 @@ export default {
   box-sizing: border-box;
   color:#ADBAC7;
   border: 1px solid #444c56;
-  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  /* font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
   justify-content: center;
   font-weight: 600;
   line-height: 0.25rem;

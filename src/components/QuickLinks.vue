@@ -66,12 +66,11 @@ export default {
 </script>
 
 <style>
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'Noto Sans';
+    /* font-family: 'Noto Sans'; */
 }
 .map {
     margin: 2rem;
