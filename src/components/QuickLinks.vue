@@ -2,9 +2,9 @@
     <h1>Medical Map</h1>
     <h2>Locate hospitals near you!</h2>
     <div class="map">
-        <a class="maplink" href="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F" target="search_iframe">Hospitals</a> -
-        <a class="maplink" style="border:none; background: none" href="https://www.google.com/maps/d/u/5/embed?mid=1AGrb64NWLOa994P8DcbFf0pXoQisdWcN&ehbc=2E312F" target="search_iframe">Polyclinics</a>
-        <br>
+        <a class="maplink" href="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F" tabindex="1" target="search_iframe">Hospitals</a> -
+        <a class="maplink" style="border:none; background: none" href="https://www.google.com/maps/d/u/5/embed?mid=1AGrb64NWLOa994P8DcbFf0pXoQisdWcN&ehbc=2E312F" tabindex = "1" target="search_iframe">Polyclinics</a>
+        <br><br>
         <iframe src="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F" 
         width="640" 
         height="480" name="search_iframe">
@@ -55,18 +55,6 @@ for (var i = 0; i < buttons.length; i++) {
   });
 }
 
-// let iframe = document.querySelector('.map');
-// let hosDisplay = document.querySelector('#hosDisplay');
-// let polyDisplay = document.querySelector('#polyDisplay');
-
-// polyDisplay.addEventListener('click', () => {
-//     display: 
-// })
-
-// hosDisplay.addEventListener('click', () => {
-//     iframe.src="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F"; 
-// })
-
 export default {
     name: 'QuickLinks',
     methods: {
@@ -97,12 +85,12 @@ export default {
     margin: 2rem;
 }
 .card {
-    background:antiquewhite; 
+    background:rgb(60, 85, 102); 
     width: 270px;
     height: 375px;
     margin: 10px;
     border-radius: 15px;
-    color: #22272e;
+    color: #ADBAC7;
 }
 .card-image {
     background-color: aliceblue;
@@ -136,54 +124,28 @@ export default {
         padding: 0.5em 1.25em;
         border-radius: 0.5em;
     }
+
 .card:hover {
-    background-color: rgb(179, 140, 93);
-    color: beige;
+    background-color: rgb(33, 51, 61);
+    color: whitesmoke;
     cursor: pointer;
     transform: scale(1.03);
     transition: all 0.5s ease;
 }
-/* .hospitals {
-    background:none;
-    border:none;
-    margin:0;
-    padding:0;
-    cursor: pointer;
-}
-.polyclinics {
-    background:none;
-    border:none;
-    margin:0;
-    padding:0;
-    cursor: pointer;
-} */
 
-.maplink:hover, maplink:focus, maplink:active, maplink:visited, .active { 
-    text-decoration: underline;
-    background: none;
-    border: none;
-    font-family: 'Noto Sans';
-    color: #22272e;
+a{   
+   color: #ADBAC7;
+   text-decoration: none;
+   font-size: 150%;
+   font-weight: bold;
 }
-
-/* unvisited link */
-a:link {
-  color: red;
-}
-
-/* visited link */
-a:visited {
-  color: green;
-}
-
-/* mouse over link */
-a:hover {
-  color: hotpink;
-}
-
-/* selected link */
 a:active {
-  color: blue;
+    color: rgb(60, 85, 102);
+}
+a[tabindex]:focus {
+    color:rgb(60, 85, 102);
+    outline: none;
+    text-decoration: underline;
 }
 
 </style>
