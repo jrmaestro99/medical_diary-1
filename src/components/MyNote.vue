@@ -2,13 +2,14 @@
     <div class = "container">
         <form id="myform">
             <div class = "formli" id="form">
-                <input type="text" id="title" placeholder="add title" v-model ="a"><br>
-                <textarea placeholder="add description" type="text" id="content" autocomplete="off" v-model="b"></textarea>
+                <input type="text" id="title" placeholder="Enter title" v-model ="a"><br>
+                <textarea placeholder="Enter description" type="text" id="content" autocomplete="off" v-model="b"></textarea>
                 <div class="save">
-                    <button id="savebutton" type="button" @click="savetofs()">add note</button>
+                    <button id="savebutton" type="button" @click="savetofs()">Save note</button>
                 </div>
 
             </div>
+            
         </form>
     </div>
 </template>
@@ -61,6 +62,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-size: 0;
   
 }
 
@@ -86,6 +88,9 @@ export default {
   font-family: 'Noto Sans';
   border-top-style:none;
   text-align: left;
+  color: #000;
+  margin-bottom: 5px;
+  
   
 }
 
@@ -98,12 +103,13 @@ export default {
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
-  display: inline-flex;
+  display: inline-block;
   font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
   margin: 0 ;
+  
   
   min-height: 3rem;
   padding: calc(.875rem - 1px) calc(1.5rem - 1px);
