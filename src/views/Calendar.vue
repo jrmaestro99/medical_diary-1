@@ -17,7 +17,6 @@ import NavBar from "@/components/NavBar.vue";
 import FuncBar from "@/components/FuncBar.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import CalendarTable from "@/components/CalendarTable.vue";
-import router from '@/router/index.js';
 import CalendarTableCalendar from "@/components/CalendarTableCalendar.vue";
 
 
@@ -41,7 +40,7 @@ export default {
         if (user) {
           this.user = user;      
         } else {
-          router.push('/login');
+          this.$router.push('/login');
         }
       })
     }

@@ -8,13 +8,21 @@ import Login from '@/components/Login.vue'
 import Landing from '@/components/Landing.vue'
 import QuickAccess from "@/views/QuickAccess.vue";
 import Calendar from '@/views/Calendar.vue'
-import { getAuth, onAuthStateChanged} from "firebase/auth"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 function isAuthenticated(to) {
+    // const routeNameList = ["Landing", "Login", "About", "Reminders", "Note", "Graph", "Links", "Calendar"];
+    // if (!routeNameList.includes(to.name)) {
+    //     return {
+    //         path: '/error',
+    //         name:'NotFound',
+    //         component: NotFound,
+    //     }
+    // }
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if (!user && to.name !== 'Login') {
-            // alert("You have not logged into your account.");
+            console.log("==> Redirecting to Login");
             return {
                 path: "/login",
                 name: "Login",
@@ -30,11 +38,11 @@ const routes = [
         name: "Landing",
         component: Landing
     },
-    {
-        path: "/login",
-        name: "Login",
-        component: Login
-    },
+    // {
+    //     path: "/login",
+    //     name: "Login",
+    //     component: Login
+    // },
     {
         path: "/about",
         name: "About",
@@ -70,14 +78,18 @@ const routes = [
         name: 'Calendar',
         component: Calendar,
         beforeEnter: [isAuthenticated]
-
+    },
+    {
+        path: '/404',
+        name: 'NotFound',
+        component: NotFound,
     },
     {
         path: '/:catchAll(.*)',
-        name:'NotFound',
-        component: NotFound,
+        redirect: '/404',
     }
 ]
+
 const router = createRouter({
     history: createWebHistory(),
     routes
