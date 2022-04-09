@@ -118,4 +118,22 @@ input{
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+#saveButton:hover,
+#saveButton:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: white;
+}
+
+#saveButton:hover {
+  transform: translateY(-1px);
+}
+
+#saveButton:active {
+  background-color: rgb(202, 202, 202);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
 </style>
