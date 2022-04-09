@@ -38,15 +38,17 @@ export default {
                 var newDiv = document.createElement("div");
                 newDiv.id= "newdiv";
                 newDiv.style.backgroundColor=getRandomColor();
-                var br = document.createElement("br");
-                var newtitle = document.createTextNode(title1);
+                
+                var newtitle = document.createElement("p");
+                newtitle.append(title1)
+                newtitle.id="title11"
                 var newContent = document.createTextNode(content1);
                 var newdate = document.createElement("p");
                 newdate.id="date";
                 newdate.append(date1)
                 var br2 = document.createElement("br");
                 newDiv.appendChild(newtitle)
-                newDiv.appendChild(br)
+                
                 newDiv.appendChild(newContent)
                 newDiv.appendChild(br2)
                 newDiv.appendChild(newdate)
@@ -87,10 +89,10 @@ export default {
       con.id = "con"
       var newNotetitle = document.createElement("input");
       newNotetitle.id = "newnotetitle"
-      newNotetitle.placeholder = "enter new title"
+      newNotetitle.placeholder = "Enter new title"
       var newNotecontent = document.createElement("textarea")
       newNotecontent.id = "newnotecontent"
-      newNotecontent.placeholder = "enter new description"
+      newNotecontent.placeholder = "Enter new description"
       var savebtn = document.createElement("button");
       savebtn.textContent="Save"
       savebtn.id = "savebtn"
@@ -172,6 +174,7 @@ export default {
 #newdiv{
   opacity: 1;
   display: flex;
+  flex-direction: column;
   align-items: left;
   text-align: left;
     margin:0 auto;
@@ -181,7 +184,7 @@ export default {
   left: 0;
   top: 0;
   font-family: 'Noto Sans';
-  font-size: 25px;
+  font-size: 20px;
   height: auto;
   margin-bottom: 15px;
   box-sizing: border-box;
@@ -198,6 +201,12 @@ export default {
     right:0;
     margin-bottom: 3px;
     margin-right: 5px;
+}
+#title11{
+  font-size: 21px;
+  font-weight: bold;
+  color: #D1D5DB;
+  text-decoration: underline;
 }
 #btn{
     background:url(../assets/close-button.png);
@@ -261,6 +270,7 @@ export default {
   box-sizing: border-box;
   outline: none;
   border: 2px solid #000;
+  font-weight: bold;
   font-size: 18px;
   font-family: 'Noto Sans';
   border-bottom-color:rgb(202, 202, 202) ;
@@ -279,6 +289,7 @@ export default {
   font-family: 'Noto Sans';
   border-top-style:none;
   text-align: left;
+  
   
 }
 #savebtn {
