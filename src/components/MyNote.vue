@@ -11,11 +11,15 @@
                 <div class="save">
                     <button id="savebutton" type="button" @click="savetofs()">Save Note</button>
                 </div>
-
+              
+              <hr>
+              
             </div>
             
         </form>
     </div>
+    <br>
+    <h2 id = "noteheader2">My Notes</h2>
 </template>
     
 
@@ -93,7 +97,7 @@ export default {
   border-top-style:none;
   text-align: left;
   color: #000;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   border-radius: 0;
 }
 
@@ -113,6 +117,7 @@ export default {
   padding: .75rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  margin-bottom: 10px;
   text-align: center;
   text-decoration: none #D1D5DB solid;
   text-decoration-thickness: auto;
