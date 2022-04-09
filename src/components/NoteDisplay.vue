@@ -242,7 +242,8 @@ export default {
 }
 
 #ebtn:hover{
-  background-color:lightgray;
+  background-color:rgb(255, 248, 248);
+  opacity: 0.6;
 }
 
 #ebtnfade:focus,
@@ -254,6 +255,7 @@ export default {
 
 #btn:hover {
   background-color:red;
+  opacity:0.5;
 }
 
 #btnfade:focus,
@@ -331,6 +333,8 @@ export default {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   color: white;
+
+  
 }
 
 #savebtn:hover {
@@ -343,6 +347,7 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
+  opacity: 0.5;
 }
 #cancelbtn {
   align-items: center;
