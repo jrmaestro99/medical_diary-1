@@ -110,7 +110,7 @@ input{
   font-size: .875rem;
   font-weight: 600;
   line-height: 0.25rem;
-  padding: .75rem;
+  padding: 1rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   text-align: center;

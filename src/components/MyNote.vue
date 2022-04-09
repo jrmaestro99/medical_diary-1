@@ -116,10 +116,10 @@ export default {
   font-size: .875rem;
   font-weight: 600;
   line-height: 0.25rem;
-  padding: .75rem;
+  padding: 1rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  margin-bottom: 10px;
+  margin: 2rem;
   text-align: center;
   text-decoration: none #D1D5DB solid;
   text-decoration-thickness: auto;
