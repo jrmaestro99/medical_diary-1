@@ -26,7 +26,6 @@ export default {
 </script>
 
 <style>
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
 
 body {
     background: #22272e;
@@ -39,7 +38,7 @@ body {
     justify-content: center;
     align-items: center;
     display: flex;
-    font-family: 'Noto Sans';
+    /* font-family: 'Noto Sans'; */
 }
 
 #container #firstchild {
@@ -59,7 +58,7 @@ img {
 #explore {
     background-color: #373E47;
     border-radius: 5px;
-    font-family: 'Noto Sans';
+    /* font-family: 'Noto Sans'; */
     padding: 0.5rem;
     margin-top: 1.2rem;
     color:#E5C6B3;

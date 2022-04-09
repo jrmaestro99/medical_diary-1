@@ -2,7 +2,7 @@
     <h1>Medical Map</h1>
     <h2>Locate hospitals near you!</h2>
     <div class="map">
-        <a class="maplink" href="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F" tabindex="1" target="search_iframe">Hospitals</a> -
+        <a class="maplink" href="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F" tabindex="1" target="search_iframe">Hospitals</a> 
         <a class="maplink" style="border:none; background: none" href="https://www.google.com/maps/d/u/5/embed?mid=1AGrb64NWLOa994P8DcbFf0pXoQisdWcN&ehbc=2E312F" tabindex = "1" target="search_iframe">Polyclinics</a>
         <br><br>
         <iframe src="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F" 
@@ -21,7 +21,7 @@
             <!-- <a href="https://doctoranywhere.com" target="_blank" rel="noopener noreferrer" class="button">Click here</a> -->
         </div>
         <div class="card" @click="open($event, 'https://eservices.healthhub.sg/public/payments/singhealth')">
-            <div class="card-image singhealth" @click="open"></div>
+            <div class="card-image singhealth"></div>
             <h2>SingHealth E-Payment</h2>
             <p>Make payment for your healthcare bills</p>
             <!-- <a href="https://e-station2.axs.com.sg/AXSOnline/core_adhoc/healthcare.php" target="_blank" rel="noopener noreferrer" class="button">Click here</a> -->
@@ -59,21 +59,18 @@ export default {
     name: 'QuickLinks',
     methods: {
         open(event, link) {
-            let yourWindow = window.open();
-            yourWindow.opener = null;
-            yourWindow.location = link;
+            window.open(link, '_blank');
         }
     }
 }
 </script>
 
 <style>
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'Noto Sans';
+    /* font-family: 'Noto Sans'; */
 }
 .map {
     margin: 2rem;
@@ -145,7 +142,7 @@ a:active {
 a[tabindex]:focus, a:hover {
     color:rgb(60, 85, 102);
     outline: none;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 </style>

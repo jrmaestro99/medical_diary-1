@@ -72,10 +72,6 @@ export default {
 </script>
 
 <style scoped>
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
-* {
-    font-family: 'Noto Sans';
-}
 
 .container {
     margin-right: 50px;
@@ -106,11 +102,11 @@ input{
   box-sizing: border-box;
   color:#ADBAC7;
   border: 1px solid #444c56;
-  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  /* font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
   font-size: .875rem;
   font-weight: 600;
   line-height: 0.25rem;
-  padding: .75rem;
+  padding: 1rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   text-align: center;
@@ -122,4 +118,20 @@ input{
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+#saveButton:hover,
+#saveButton:focus {
+    background-color: #444c56;
+}
+
+#saveButton:hover {
+  transform: translateY(-1px);
+}
+
+/* #saveButton:active {
+  background-color: rgb(202, 202, 202);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+} */
 </style>

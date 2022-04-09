@@ -24,11 +24,10 @@ export default {
 </script>
 
 <style scoped>
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
 
 #notfoundtitle, #notfoundcontent {
     color: #ADBAC7;
-    font-family: 'Noto Sans';
+    /* font-family: 'Noto Sans'; */
     font-weight: bold;
 }
 
@@ -73,7 +72,7 @@ div {
 button {
     background-color: #373E47;
     border-radius: 5px;
-    font-family: 'Noto Sans';
+    /* font-family: 'Noto Sans'; */
     padding: 0.5rem;
     margin-top: 1.2rem;
     color:#ADBAC7;

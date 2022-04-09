@@ -40,7 +40,6 @@ export default {
 </script>
 
 <style scoped>
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
 
 #funcnav {
     display: flex;
@@ -48,7 +47,7 @@ export default {
     margin: 0.5rem;
     margin-top: 2rem;
     color: #ADBAC7;
-    font-family: 'Noto Sans';
+    /* font-family: 'Noto Sans'; */
 }
 
 #signout {
