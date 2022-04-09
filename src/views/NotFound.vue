@@ -1,5 +1,5 @@
 <template>
-  <div style="text-align:center;" v-if="user">
+  <div style="text-align:center;">
     <p id="notfoundtitle">4<font-awesome-icon id='erroricon' icon="circle-exclamation" size="2xs"/>4</p>
     <pre id="notfoundcontent" rows="5" cols="100">
         catch  ( <p id='error'>Error 404</p> )  {
@@ -12,30 +12,13 @@
 </template>
 
 <script>
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
     name:"NotFound",
-    data() {
-        return {
-            user:false,        
-        }
-    },
     methods: {
         redirect() {
             this.$router.push('/');
         }
-    },
-    beforeMount() {
-        const auth = getAuth();      
-        this.user = auth.currentUser;
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                this.user = user;      
-            } else {
-                this.$router.push('/login');
-            }
-        })
     }
 }   
 </script>
