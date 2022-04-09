@@ -38,15 +38,17 @@ export default {
                 var newDiv = document.createElement("div");
                 newDiv.id= "newdiv";
                 newDiv.style.backgroundColor=getRandomColor();
-                var br = document.createElement("br");
-                var newtitle = document.createTextNode(title1);
+                
+                var newtitle = document.createElement("p");
+                newtitle.append(title1)
+                newtitle.id="title11"
                 var newContent = document.createTextNode(content1);
                 var newdate = document.createElement("p");
                 newdate.id="date";
                 newdate.append(date1)
                 var br2 = document.createElement("br");
                 newDiv.appendChild(newtitle)
-                newDiv.appendChild(br)
+                
                 newDiv.appendChild(newContent)
                 newDiv.appendChild(br2)
                 newDiv.appendChild(newdate)
@@ -87,10 +89,12 @@ export default {
       con.id = "con"
       var newNotetitle = document.createElement("input");
       newNotetitle.id = "newnotetitle"
-      newNotetitle.placeholder = "enter new title"
+      newNotetitle.value=String(note);
+      // newNotetitle.placeholder = "Enter new title"
       var newNotecontent = document.createElement("textarea")
       newNotecontent.id = "newnotecontent"
-      newNotecontent.placeholder = "enter new description"
+      // newNotecontent.placeholder = "Enter new description"
+      newNotecontent.value= String(a)
       var savebtn = document.createElement("button");
       savebtn.textContent="Save"
       savebtn.id = "savebtn"
@@ -129,6 +133,7 @@ export default {
                 
             }
         catch(error) {
+                
                 console.error("Error adding note", error);
             }
         document.getElementById("div1").innerHTML="";
@@ -172,6 +177,7 @@ export default {
 #newdiv{
   opacity: 1;
   display: flex;
+  flex-direction: column;
   align-items: left;
   text-align: left;
     margin:0 auto;
@@ -181,7 +187,7 @@ export default {
   left: 0;
   top: 0;
   font-family: 'Noto Sans';
-  font-size: 25px;
+  font-size: 20px;
   height: auto;
   margin-bottom: 15px;
   box-sizing: border-box;
@@ -192,12 +198,18 @@ export default {
     margin: 0;
   font-family: 'Noto Sans';
   font-size: 18px;
-  color: rgba(0, 0, 0, 0.5);
+  
   position:absolute;
     bottom:0;
     right:0;
     margin-bottom: 3px;
     margin-right: 5px;
+}
+#title11{
+  font-size: 21px;
+  font-weight: bold;
+  color: #D1D5DB;
+  text-decoration: underline;
 }
 #btn{
     background:url(../assets/close-button.png);
@@ -261,6 +273,7 @@ export default {
   box-sizing: border-box;
   outline: none;
   border: 2px solid #000;
+  font-weight: bold;
   font-size: 18px;
   font-family: 'Noto Sans';
   border-bottom-color:rgb(202, 202, 202) ;
@@ -280,41 +293,41 @@ export default {
   border-top-style:none;
   text-align: left;
   
+  
 }
 #savebtn {
+ 
   align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
   display: block;
+  background-color: #373E47;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color:#ADBAC7;
+  border: 1px solid #444c56;
   font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  font-size: 16px;
-  font-weight: 600;
   justify-content: center;
-  line-height: 1.25;
-  margin: 0 auto;
+  font-weight: 600;
+  line-height: 0.25rem;
   position: relative;
-  text-decoration: none;
-  transition: all 250ms;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  vertical-align: baseline;
   width: 70px;
-  height:30px;
-  text-align: center;
+  height:30px
 
-  
 }
 #savebtn:hover,
 #savebtn:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
+  color: white;
 }
 
 #savebtn:hover {
@@ -322,7 +335,7 @@ export default {
 }
 
 #savebtn:active {
-  background-color: #F0F0F1;
+  background-color: rgb(202, 202, 202);
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
@@ -330,30 +343,29 @@ export default {
 }
 #cancelbtn {
   align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
   display: block;
+  background-color: #373E47;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color:#ADBAC7;
+  border: 1px solid #444c56;
   font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  font-size: 16px;
-  font-weight: 600;
   justify-content: center;
-  line-height: 1.25;
-  margin: 5px auto;
+  font-weight: 600;
+  line-height: 0.25rem;
   position: relative;
-  text-decoration: none;
-  transition: all 250ms;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  vertical-align: baseline;
   width: 70px;
-  height:30px;
-  text-align: center;
+  height:30px
 
   
 }
@@ -361,7 +373,7 @@ export default {
 #cancelbtn:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
+  color: white;
 }
 
 #cancelbtn:hover {
@@ -369,7 +381,7 @@ export default {
 }
 
 #cancelbtn:active {
-  background-color: #F0F0F1;
+  background-color:rgb(202, 202, 202);
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);

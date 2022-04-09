@@ -1,17 +1,25 @@
 <template>
+    <h2 id = "noteheader">Add New Note</h2>
+    <br>
     <div class = "container">
+        
         <form id="myform">
+            
             <div class = "formli" id="form">
-                <input type="text" id="title" placeholder="Enter title" v-model ="a"><br>
+                <input type="text" id="title" placeholder="Enter title" required v-model ="a"><br>
                 <textarea placeholder="Enter description" type="text" id="content" autocomplete="off" v-model="b"></textarea>
                 <div class="save">
-                    <button id="savebutton" type="button" @click="savetofs()">Save note</button>
+                    <button id="savebutton" type="button" @click="savetofs()">Save Note</button>
                 </div>
-
+              
+              <hr>
+              
             </div>
             
         </form>
     </div>
+    <br>
+    <h2 id = "noteheader2">My Notes</h2>
 </template>
     
 
@@ -48,6 +56,7 @@ export default {
                 this.$emit("added")
             }
             catch(error) {
+                alert("Please fill in title.")
                 console.error("Error adding note", error);
             }
         }
@@ -76,6 +85,7 @@ export default {
   font-size: 18px;
   font-family: 'Noto Sans';
   border-bottom-color: rgb(202, 202, 202);
+  font-weight: bold;
 }
 #content{
   width: 70%;
@@ -89,45 +99,42 @@ export default {
   border-top-style:none;
   text-align: left;
   color: #000;
-  margin-bottom: 5px;
-  
-  
+  margin-bottom: 10px;
+  border-radius: 0;
 }
 
 #savebutton {
-  align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
+ 
   display: inline-block;
+  background-color: #373E47;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color:#ADBAC7;
+  border: 1px solid #444c56;
   font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: .875rem;
   font-weight: 600;
-  justify-content: center;
-  line-height: 1.25;
-  margin: 0 ;
-  
-  
-  min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
-  text-decoration: none;
-  transition: all 250ms;
+  line-height: 0.25rem;
+  padding: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin: 2rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto;
 }
 
 #savebutton:hover,
 #savebutton:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
+  color: white;
 }
 
 #savebutton:hover {
@@ -135,7 +142,7 @@ export default {
 }
 
 #savebutton:active {
-  background-color: #F0F0F1;
+  background-color: rgb(202, 202, 202);
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);

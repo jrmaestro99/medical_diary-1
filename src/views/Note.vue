@@ -62,8 +62,6 @@ body{
   padding: 4rem;
   padding-bottom: 2rem;
   padding-top: 2rem;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
   text-align: center;
   margin-bottom: 4rem;
 }

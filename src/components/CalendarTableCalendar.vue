@@ -314,7 +314,7 @@ white-space: normal;
 }
 
 .modal button:hover{
-  background-color:orange;
+  background-color: #444c56;
   transition : 0.25s
   }
 .modal button:active {
