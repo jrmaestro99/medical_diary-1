@@ -5,7 +5,7 @@
 
 <script>
 import firebaseApp from '../firebase.js';
-import { deleteDoc, getFirestore, doc, orderBy } from "firebase/firestore";
+import { query, deleteDoc, getFirestore, doc, orderBy } from "firebase/firestore";
 import { collection, getDocs,setDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
@@ -27,7 +27,7 @@ export default {
             ',.2)';
             }
             let notecol = String(user) + '.notes'
-            let z = await getDocs(collection(db, notecol),orderBy("timeStamp"))//not sorted by timestamp
+            let z = await getDocs(query(collection(db, notecol),orderBy("timeStamp")))//not sorted by timestamp
             //  let z = await db.collection("Notes").get()
             var currentDiv = document.getElementById("div1");
             z.forEach((docs)=> {
