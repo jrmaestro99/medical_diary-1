@@ -3,7 +3,7 @@
     <span>Daily Blood Pressure: <b>{{ bpdisplay }}</b></span><br><br>
     <span>Daily Weight: <b>{{ wgdisplay }}</b></span><br><br>
 
-    <label for="healthinput">Choose what you want to input: </label>
+    <label for="healthinput">Choose input: </label>
     <select id="healthinput" v-model="health">
     <option value=""></option>
     <option>Blood Pressure</option>
