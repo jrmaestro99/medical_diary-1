@@ -89,10 +89,12 @@ export default {
       con.id = "con"
       var newNotetitle = document.createElement("input");
       newNotetitle.id = "newnotetitle"
-      newNotetitle.placeholder = "Enter new title"
+      newNotetitle.value=String(note);
+      // newNotetitle.placeholder = "Enter new title"
       var newNotecontent = document.createElement("textarea")
       newNotecontent.id = "newnotecontent"
-      newNotecontent.placeholder = "Enter new description"
+      // newNotecontent.placeholder = "Enter new description"
+      newNotecontent.value= String(a)
       var savebtn = document.createElement("button");
       savebtn.textContent="Save"
       savebtn.id = "savebtn"
@@ -131,6 +133,7 @@ export default {
                 
             }
         catch(error) {
+                
                 console.error("Error adding note", error);
             }
         document.getElementById("div1").innerHTML="";
@@ -332,7 +335,7 @@ export default {
 }
 
 #savebtn:active {
-  background-color: rgba(0, 0, 0, 0.06);
+  background-color: rgb(202, 202, 202);
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
@@ -378,7 +381,7 @@ export default {
 }
 
 #cancelbtn:active {
-  background-color:rgba(0, 0, 0, 0.06);
+  background-color:rgb(202, 202, 202);
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);

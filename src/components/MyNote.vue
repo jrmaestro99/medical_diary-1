@@ -6,7 +6,7 @@
         <form id="myform">
             
             <div class = "formli" id="form">
-                <input type="text" id="title" placeholder="Enter title" v-model ="a"><br>
+                <input type="text" id="title" placeholder="Enter title" required v-model ="a"><br>
                 <textarea placeholder="Enter description" type="text" id="content" autocomplete="off" v-model="b"></textarea>
                 <div class="save">
                     <button id="savebutton" type="button" @click="savetofs()">Save Note</button>
@@ -56,6 +56,7 @@ export default {
                 this.$emit("added")
             }
             catch(error) {
+                alert("Please fill in title.")
                 console.error("Error adding note", error);
             }
         }
@@ -84,6 +85,7 @@ export default {
   font-size: 18px;
   font-family: 'Noto Sans';
   border-bottom-color: rgb(202, 202, 202);
+  font-weight: bold;
 }
 #content{
   width: 70%;
@@ -140,7 +142,7 @@ export default {
 }
 
 #savebutton:active {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgb(202, 202, 202);
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
