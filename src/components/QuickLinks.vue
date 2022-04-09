@@ -2,8 +2,14 @@
     <h1>Medical Map</h1>
     <h2>Locate hospitals near you!</h2>
     <div class="map">
-        <a class="maplink" href="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F" tabindex="1" target="search_iframe">Hospitals</a> 
-        <a class="maplink" style="border:none; background: none" href="https://www.google.com/maps/d/u/5/embed?mid=1AGrb64NWLOa994P8DcbFf0pXoQisdWcN&ehbc=2E312F" tabindex = "1" target="search_iframe">Polyclinics</a>
+        <a class="maplink" :class="{'active': hospitalSelected}" @click="hospitalSelected=true" 
+        href="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F" 
+        tabindex="1" target="search_iframe">Hospitals</a> |
+
+        <a class="maplink" :class="{'active': !hospitalSelected}" @click="hospitalSelected=false" 
+        style="border:none; background: none" href="https://www.google.com/maps/d/u/5/embed?mid=1AGrb64NWLOa994P8DcbFf0pXoQisdWcN&ehbc=2E312F" 
+        tabindex = "1" target="search_iframe">Polyclinics</a>
+
         <br><br>
         <iframe src="https://www.google.com/maps/d/u/5/embed?mid=1PkDhpq_W--3HT_LL-V0PHrP9cuyWX6Zp&ehbc=2E312F" 
         width="640" 
@@ -57,6 +63,11 @@ for (var i = 0; i < buttons.length; i++) {
 
 export default {
     name: 'QuickLinks',
+    data() {
+        return {
+            hospitalSelected: true,
+        }
+    },
     methods: {
         open(event, link) {
             window.open(link, '_blank');
@@ -135,10 +146,13 @@ a{
    text-decoration: none;
    font-size: 150%;
    font-weight: bold;
+   margin: 0.5rem;
 }
-a:active {
+
+.active {
     color: rgb(60, 85, 102);
 }
+
 a[tabindex]:focus, a:hover {
     color:rgb(60, 85, 102);
     outline: none;
