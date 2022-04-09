@@ -5,7 +5,7 @@
     <div v-if="user">
         <div id="content">
             <MyNote @added="change"/>
-            <NoteDisplay @added="change" :key="refreshComp"/>
+            <NoteDisplay @added="change()" :key="refreshComp"/>
         </div>
     </div>
   </div>

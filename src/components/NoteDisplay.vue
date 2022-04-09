@@ -9,11 +9,12 @@ import { deleteDoc, getFirestore, doc, orderBy } from "firebase/firestore";
 import { collection, getDocs,setDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
+
 const db = getFirestore(firebaseApp);
 
-export default { 
+export default {
     mounted() {
-        
+      
         async function display(){
             const auth = getAuth();
             var user = auth.currentUser.email;
@@ -100,8 +101,9 @@ export default {
       con.appendChild(cancelbtn)
       zz.appendChild(con)
       savebtn.onclick = function() {
-          savetodb()
-          location.reload();
+          savetodb();
+          
+          
       }
       cancelbtn.onclick = function() {
           savetodb2(z)
@@ -123,11 +125,14 @@ export default {
                 title: a, content: b, dateandtime: c, timeStamp: d
                 })
                 console.log(docRef)
-                this.$emit("added")
+                
+                
             }
         catch(error) {
                 console.error("Error adding note", error);
             }
+        document.getElementById("div1").innerHTML="";
+        display();
       }
 
       async function savetodb2(note) {
@@ -145,11 +150,11 @@ export default {
                 title: a, content: b, dateandtime: c, timeStamp: d
                 })
                 console.log(docRef)
-                this.$emit("added")
             }
         catch(error) {
                 console.error("Error adding note", error);
             }
+        display()   
       }
 
     async function deleteNote(note) {
