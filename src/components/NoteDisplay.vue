@@ -14,8 +14,12 @@ const db = getFirestore(firebaseApp);
 
 export default {
     mounted() {
-      
-        async function display(){
+      const div = document.getElementById("div1");
+      div.innerHTML="";
+      this.display(String(this.user)+'.notes');
+    },
+    methods: {
+        async display(){
             const auth = getAuth();
             var user = auth.currentUser.email;
             function getRandomColor() {
@@ -59,7 +63,7 @@ export default {
                 bu.className = "btn"
                 bu.id="btn"
                 bu.onclick = function() {
-                    deleteNote(title1)
+                    this.deleteNote(title1)
                 }
                 newDiv.appendChild(bu)
 
@@ -67,108 +71,106 @@ export default {
                 editbtn.title="Edit"
                 editbtn.id="ebtn"
                 editbtn.onclick = function() {
-                  updateNote(title1, content1, date1, timestamp1, newDiv)
+                  this.updateNote(title1, content1, date1, timestamp1, newDiv)
                 }
                 newDiv.appendChild(editbtn)
                 currentDiv.insertBefore(newDiv,currentDiv.firstChild);
                 
             });
-        }
-    display(String(this.user)+'.notes')
+        },
 
-    async function updateNote(note, content, date, timestamp, division) {
-      const auth = getAuth();
-      var user = auth.currentUser.email;    
-      var z = note
-      var a = content
-      var b = date
-      var c = timestamp
-      var zz = division
-      let notecol = String(user) + '.notes'
-      await deleteDoc(doc(db,notecol,z))
-      var con = document.createElement("container")
-      con.id = "con"
-      var newNotetitle = document.createElement("input");
-      newNotetitle.id = "newnotetitle"
-      newNotetitle.value=String(note);
-      // newNotetitle.placeholder = "Enter new title"
-      var newNotecontent = document.createElement("textarea")
-      newNotecontent.id = "newnotecontent"
-      // newNotecontent.placeholder = "Enter new description"
-      newNotecontent.value= String(a)
-      var savebtn = document.createElement("button");
-      savebtn.textContent="Save"
-      savebtn.id = "savebtn"
-      var cancelbtn = document.createElement("button");
-      cancelbtn.textContent="Cancel"
-      cancelbtn.id = "cancelbtn"
-      zz.innerHTML = "";
-      con.appendChild(newNotetitle)
-      con.appendChild(newNotecontent)
-      con.appendChild(savebtn)
-      con.appendChild(cancelbtn)
-      zz.appendChild(con)
-      savebtn.onclick = function() {
-          savetodb();     
-      }
-      cancelbtn.onclick = function() {
-        savetodb2(z, a, b, c);
-      }
-    }
-
-    async function savetodb() {
+      async updateNote(note, content, date, timestamp, division) {
         const auth = getAuth();
-        var user = auth.currentUser.email; 
-        var a = document.getElementById("newnotetitle").value
-        var b = document.getElementById("newnotecontent").value
-        var c = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
-        var d = new Date()
-        
-        try{
-                let notecol = String(user) + '.notes'
-                const docRef = await setDoc(doc(db, notecol, a), {
-                title: a, content: b, dateandtime: c, timeStamp: d
-                })
-                console.log(docRef)
-                
-                
-            }
-        catch(error) {
-                
-                console.error("Error adding note", error);
-            }
-        document.getElementById("div1").innerHTML="";
-        display();
-      }
-
-      async function savetodb2(a, b ,c, d) {
-        const auth = getAuth();
-        var user = auth.currentUser.email;
-        try{
-                let notecol = String(user) + '.notes'
-                const docRef = await setDoc(doc(db, notecol, a), {
-                title: a, content: b, dateandtime: c, timeStamp: d
-                })
-                console.log(docRef)
-            }
-        catch(error) {
-                console.error("Error adding note", error);
-            }
-        document.getElementById("div1").innerHTML="";
-        display()   
-      }
-
-    async function deleteNote(note) {
-        const auth = getAuth();
-        var user = auth.currentUser.email;
-        var z = note;
+        var user = auth.currentUser.email;    
+        var z = note
+        var a = content
+        var b = date
+        var c = timestamp
+        var zz = division
         let notecol = String(user) + '.notes'
         await deleteDoc(doc(db,notecol,z))
-        document.getElementById("div1").innerHTML = "";
-        display();
-    }
+        var con = document.createElement("container")
+        con.id = "con"
+        var newNotetitle = document.createElement("input");
+        newNotetitle.id = "newnotetitle"
+        newNotetitle.value=String(note);
+        // newNotetitle.placeholder = "Enter new title"
+        var newNotecontent = document.createElement("textarea")
+        newNotecontent.id = "newnotecontent"
+        // newNotecontent.placeholder = "Enter new description"
+        newNotecontent.value= String(a)
+        var savebtn = document.createElement("button");
+        savebtn.textContent="Save"
+        savebtn.id = "savebtn"
+        var cancelbtn = document.createElement("button");
+        cancelbtn.textContent="Cancel"
+        cancelbtn.id = "cancelbtn"
+        zz.innerHTML = "";
+        con.appendChild(newNotetitle)
+        con.appendChild(newNotecontent)
+        con.appendChild(savebtn)
+        con.appendChild(cancelbtn)
+        zz.appendChild(con)
+        savebtn.onclick = function() {
+            this.savetodb();     
+        }
+        cancelbtn.onclick = function() {
+            this.savetodb2(z, a, b, c);
+        }
+      },
 
-    },
+      async savetodb() {
+          const auth = getAuth();
+          var user = auth.currentUser.email; 
+          var a = document.getElementById("newnotetitle").value
+          var b = document.getElementById("newnotecontent").value
+          var c = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
+          var d = new Date()
+          
+          try{
+                  let notecol = String(user) + '.notes'
+                  const docRef = await setDoc(doc(db, notecol, a), {
+                  title: a, content: b, dateandtime: c, timeStamp: d
+                  })
+                  console.log(docRef)
+                  
+                  
+              }
+          catch(error) {
+                  
+                  console.error("Error adding note", error);
+              }
+          document.getElementById("div1").innerHTML="";
+          this.display();
+        },
+
+      async savetodb2(a, b ,c, d) {
+        const auth = getAuth();
+        var user = auth.currentUser.email;
+        try{
+                let notecol = String(user) + '.notes'
+                const docRef = await setDoc(doc(db, notecol, a), {
+                title: a, content: b, dateandtime: c, timeStamp: d
+                })
+                console.log(docRef)
+            }
+        catch(error) {
+                console.error("Error adding note", error);
+            }
+        document.getElementById("div1").innerHTML="";
+        this.display()   
+      },
+
+      async deleteNote(note) {
+          const auth = getAuth();
+          var user = auth.currentUser.email;
+          var z = note;
+          let notecol = String(user) + '.notes'
+          await deleteDoc(doc(db,notecol,z))
+          document.getElementById("div1").innerHTML = "";
+          this.display();
+      }
+    }
   
     
 }
