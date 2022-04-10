@@ -14,10 +14,13 @@ const db = getFirestore(firebaseApp);
 
 export default {
     mounted() {
-      
-        async function display(){
-            const auth = getAuth();
-            var user = auth.currentUser.email;
+        const auth = getAuth();
+        var user = auth.currentUser.email;
+        let notecol = String(user) + '.notes'
+
+        async function display(notecol){
+            // const auth = getAuth();
+            // var user = auth.currentUser.email;
             function getRandomColor() {
               return 'rgba(' +
               (Math.floor(Math.random() * 56) + 200) + ', ' +
@@ -25,7 +28,7 @@ export default {
               (Math.floor(Math.random() * 56) + 200) +
               ',.2)';
             }
-            let notecol = String(user) + '.notes'
+            // let notecol = String(user) + '.notes'
             let z = await getDocs(query(collection(db, notecol),orderBy("timeStamp")))
             var currentDiv = document.getElementById("div1");
             document.getElementById("div1").innerHTML = "";
@@ -74,7 +77,7 @@ export default {
                 currentDiv.insertBefore(newDiv,currentDiv.firstChild);
             });
         }
-        display()
+        display(notecol)
 
         async function updateNote(note, content, date, timestamp, division) {
           const auth = getAuth();
@@ -118,7 +121,8 @@ export default {
 
         async function savetodb() {
             const auth = getAuth();
-            var user = auth.currentUser.email; 
+            var user = auth.currentUser.email;
+            let notecol = String(user) + '.notes'
             var a = document.getElementById("newnotetitle").value
             var b = document.getElementById("newnotecontent").value
             var c = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
@@ -130,15 +134,13 @@ export default {
                     title: a, content: b, dateandtime: c, timeStamp: d
                     })
                     console.log(docRef)
-                    
-                    
                 }
             catch(error) {
                     
                     console.error("Error adding note", error);
                 }
             document.getElementById("div1").innerHTML="";
-            display();
+            display(notecol);
           }
 
           async function savetodb2(a, b ,c, d) {
@@ -155,7 +157,7 @@ export default {
                     console.error("Error adding note", error);
                 }
             document.getElementById("div1").innerHTML="";
-            display()   
+            display(notecol)   
           }
 
         async function deleteNote(note) {
@@ -165,7 +167,7 @@ export default {
             let notecol = String(user) + '.notes'
             await deleteDoc(doc(db,notecol,z))
             document.getElementById("div1").innerHTML = "";
-            display();
+            display(notecol);
         }
 
     },
