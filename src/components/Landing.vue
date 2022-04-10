@@ -7,8 +7,8 @@
         </div>
         <div id='secondchild'>
             <h1>The medical diary you ever dreamed of</h1><br>
-            <h3>We made a tool so you can <br>easily keep track of<br>
-            your medicine subscription and appointments.<br>But there is a lot more.</h3>
+            <h3>We made a tool so you can easily keep track of
+            your prescriptions and appointments.<br>But there are a lot more.</h3>
             <button id='explore' @click='login'>Explore More</button>
         </div>
     </div>

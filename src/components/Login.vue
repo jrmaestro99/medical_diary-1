@@ -5,7 +5,7 @@
         </div>
         <div id="firebaseui-auth-container"></div>
         <div id="pagecontent">
-            Medical Diary is an app to keep track of your medical subscriptions and appointments. <br>
+            Medical Diary is an app to keep track of your prescriptions and appointments. <br>
             Login to explore more.
         </div>
         <!-- <h5>copyright@cpp-2021</h5> -->

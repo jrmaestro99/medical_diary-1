@@ -1,9 +1,9 @@
 <template>
 
-    <span>Daily Blood Pressure: <b>{{ bpdisplay }}</b></span><br><br>
-    <span>Daily Weight: <b>{{ wgdisplay }}</b></span><br><br>
+    <span>Today's Blood Pressure: <b>{{ bpdisplay }} mmHg</b></span><br><br>
+    <span>Today's Weight: <b>{{ wgdisplay }} kg</b></span><br><br>
 
-    <label for="healthinput">Choose what you want to input: </label>
+    <label for="healthinput">Choose input: </label>
     <select id="healthinput" v-model="health">
     <option value=""></option>
     <option>Blood Pressure</option>
@@ -111,7 +111,7 @@ export default {
     methods:{
         async savetofb(event, doc, value, message) {
 
-            let isExecuted = confirm("Do You Want To Save Today's " + message + " To Firebase?");
+            let isExecuted = confirm("Do you want to save today's " + message + "?");
  
             if (isExecuted) {
                 try {
@@ -131,7 +131,7 @@ export default {
         },
 
         async save(event, bpdoc, wgdoc, bpvalue, wgvalue) {
-            let isExecuted = confirm("Do You Want To Save Today's Blood Pressure and Weight To Firebase?");
+            let isExecuted = confirm("Do you want to save today's blood pressure & weight?");
  
             if (isExecuted) {
                 try {
@@ -249,5 +249,23 @@ label {
     font-size: 16px;
 }
 
+#bsave, #wgsave, #bpsave {
+    background-color: #373E47;
+    border-radius: 5px;
+    /* font-family: 'Noto Sans'; */
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    color:#ADBAC7;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    border: 1px solid #444c56;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+#bpchart, #wgchart {
+    margin-top: 1rem;
+}
 
 </style>

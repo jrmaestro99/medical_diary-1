@@ -5,8 +5,8 @@
     <div v-if='user'>
         <div id='content'>
             <p class='heading'>Welcome to Medical Diary</p>
-            <p class='content'>Access to self care, health status, therapy and habit formation all in one app<br>
-            We aim to help you develop a better self</p>
+            <p class='content'>Access to self care, health status, therapy and habit formation all in one app.<br>
+            We aim to help you develop a better self.</p>
         </div>
     </div>
   </div>
