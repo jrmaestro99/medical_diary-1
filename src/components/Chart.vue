@@ -1,7 +1,7 @@
 <template>
 
-    <span>Daily Blood Pressure: <b>{{ bpdisplay }}</b></span><br><br>
-    <span>Daily Weight: <b>{{ wgdisplay }}</b></span><br><br>
+    <span>Today's Blood Pressure: <b>{{ bpdisplay }} mmHg</b></span><br><br>
+    <span>Today's Weight: <b>{{ wgdisplay }} kg</b></span><br><br>
 
     <label for="healthinput">Choose input: </label>
     <select id="healthinput" v-model="health">
@@ -249,5 +249,23 @@ label {
     font-size: 16px;
 }
 
+#bsave, #wgsave, #bpsave {
+    background-color: #373E47;
+    border-radius: 5px;
+    /* font-family: 'Noto Sans'; */
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    color:#ADBAC7;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    border: 1px solid #444c56;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+#bpchart, #wgchart {
+    margin-top: 1rem;
+}
 
 </style>
