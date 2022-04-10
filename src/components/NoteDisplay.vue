@@ -16,20 +16,19 @@ export default {
     mounted() {
       const div = document.getElementById("div1");
       div.innerHTML="";
-      this.display();
+      this.display(String(this.user)+'.notes');
     },
     methods: {
         async display(){
-            const div = document.getElementById("div1");
-            div.innerHTML="";
             const auth = getAuth();
             var user = auth.currentUser.email;
             function getRandomColor() {
-              return 'rgba(' +
-              (Math.floor(Math.random() * 56) + 200) + ', ' +
-              (Math.floor(Math.random() * 56) + 200) + ', ' +
-              (Math.floor(Math.random() * 56) + 200) +
-              ',.2)';
+
+            return 'rgba(' +
+            (Math.floor(Math.random() * 56) + 200) + ', ' +
+            (Math.floor(Math.random() * 56) + 200) + ', ' +
+            (Math.floor(Math.random() * 56) + 200) +
+            ',.2)';
             }
             let notecol = String(user) + '.notes'
             let z = await getDocs(query(collection(db, notecol),orderBy("timeStamp")))
